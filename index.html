@@ -10,160 +10,651 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   
   <style>
-    /* --- 🔴 CARD TAG ICON RED COLOR --- */
 
-.card-tag i {
-    color: #ff0000 !important; /* Matrix Red Force */
-    font-size: 0.9rem;
-    margin-right: 5px;
-    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.6)); /* Subtle Glow */
-    vertical-align: middle;
-}
-
-.card-tag {
-    color: #ffffff !important; /* Text White-ahve irukkum */
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-    /* --- ⚠️ CORE DESIGN (FIXED COLORS) --- */
-    html { scroll-behavior: smooth; }
-    
-    body, html {
-      margin: 0; padding: 0;
-      width: 100%;
-      background-color: #000;
-      overflow-x: hidden;
-      font-family: 'DM Sans', sans-serif;
-    }
-
-
-    /* --- 🧭 NAVIGATION (GLITTER INTEGRATED) --- */
-    nav {
-      position: fixed !important;
-      top: 0; left: 0; width: 100%;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 4%;
-      box-sizing: border-box;
-      background: rgba(0, 0, 0, 0.85); 
-      backdrop-filter: blur(12px);
-      z-index: 99999 !important;
-      border-bottom: 1px solid rgba(255, 0, 0, 0.2);
-    }
-
-    .nav-left { display: flex; align-items: center; gap: clamp(10px, 2vw, 15px); text-decoration: none; }
-    
-    .matrix-logo-img {
-      height: clamp(50px, 8vw, 80px); width: auto; aspect-ratio: 1/1;
-      object-fit: cover; border-radius: 50%;
-      filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
-    }
-
-    .nav-brand {
-      font-family: 'Syne', sans-serif;
-      color: #fff !important; font-size: clamp(1rem, 4vw, 1.6rem);
-      font-weight: 800; text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .nav-brand span { color: #ff0000; }
-
-    .nav-right {
-      display: flex; align-items: center;
-      gap: clamp(10px, 2.5vw, 20px);
-    }
-    .nav-right a {
-      color: #fff !important; 
-      text-decoration: none;
-      font-size: clamp(0.65rem, 1.8vw, 0.85rem);
-      text-transform: uppercase; font-weight: 700;
-      cursor: pointer; transition: 0.3s;
-    }
-    .nav-right a:hover { color: #ff0000 !important; text-shadow: 0 0 8px #ff0000; }
-
-    /* --- ✨ 8-POINTED STAR ENGINE --- */
-    #star-container {
-      position: fixed; top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      z-index: 1; transform-style: preserve-3d;
-      pointer-events: none; perspective: 1200px; 
-    }
-
-    .star-8 {
-      position: absolute;
-      will-change: transform, opacity;
-      animation: flySmooth 6s infinite linear;
-      opacity: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .star-8-inner {
-      width: 100%; height: 100%;
-      background: currentColor;
-      clip-path: polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%);
-      position: absolute;
-      filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px currentColor);
-    }
-    .star-8-inner.cross { transform: rotate(45deg) scale(0.7); }
-
-    @keyframes flySmooth {
-      0% { transform: translate3d(0,0,-1000px) scale(0.1); opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { transform: translate3d(0,0,500px) scale(2.5); opacity: 0; }
-    }
-
-    /* --- HERO --- */
-    .hero {
-      position: relative; z-index: 10;
-      height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 0 5%;
-    }
-    .hero-label { letter-spacing: 10px; color: #ff0000; font-weight: bold; margin-bottom: 20px; font-size: 0.85rem; }
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.5rem, 11vw, 6.5rem);
-      margin: 0; font-weight: 900; text-transform: uppercase; color: white;
-    }
-
-    /* --- 📜 ABOUT SECTION --- */
-    .about-section {
-      position: relative; z-index: 10;
-      padding: 150px 0 100px;
-      background-color: transparent;
-    }
-
-    .about-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.2rem, 7vw, 3rem);
-      font-weight: 800; line-height: 1.1;
-      text-transform: uppercase; color: #fff !important; 
-    }
-
-    .availability-tag {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(255, 255, 255, 0.1); 
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 8px 18px; border-radius: 50px;
-      margin-top: 30px; font-size: 0.85rem; color: #fff; 
-    }
-
-    .status-dot {
-      width: 8px; height: 8px; background: #ff0000;
-      border-radius: 50%; box-shadow: 0 0 10px #ff0000;
-      animation: pulse-red 2s infinite;
-    }
-    /* --- 🟢 WHATSAPP GLASSY GLOW EFFECT --- */
-.whatsapp-glow-btn {
+/* ============================================================
+   🔴 CINEMATIC LOADER
+   ============================================================ */
+#cinematic-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  background: rgba(255, 0, 0, 0.05); /* Very light red glass */
+  overflow: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#cinematic-loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-logo-morph {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 30px;
+}
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: ringRotate 1.8s linear infinite;
+}
+.loader-ring:nth-child(1) {
+  border-top-color: #ff0000;
+  animation-duration: 1.2s;
+}
+.loader-ring:nth-child(2) {
+  inset: 12px;
+  border-right-color: rgba(255,0,0,0.6);
+  animation-direction: reverse;
+  animation-duration: 1.8s;
+}
+.loader-ring:nth-child(3) {
+  inset: 24px;
+  border-bottom-color: rgba(255,0,0,0.3);
+  animation-duration: 2.4s;
+}
+.loader-ring:nth-child(4) {
+  inset: 36px;
+  border-left-color: rgba(255,255,255,0.5);
+  animation-direction: reverse;
+  animation-duration: 0.9s;
+}
+
+@keyframes ringRotate {
+  to { transform: rotate(360deg); }
+}
+
+.loader-center-dot {
+  position: absolute;
+  inset: 44px;
+  background: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255,0,0,0.5);
+  animation: dotPulse 1s ease-in-out infinite alternate;
+}
+@keyframes dotPulse {
+  from { transform: scale(0.8); box-shadow: 0 0 10px #ff0000; }
+  to   { transform: scale(1.2); box-shadow: 0 0 30px #ff0000, 0 0 60px rgba(255,0,0,0.4); }
+}
+
+.loader-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.loader-brand-char {
+  display: inline-block;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(40px) rotateX(90deg);
+  animation: charDrop 0.5s forwards;
+}
+.loader-brand-char.red { color: #ff0000; }
+
+@keyframes charDrop {
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+
+.loader-bar-wrap {
+  width: 200px;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  margin-top: 25px;
+  overflow: hidden;
+}
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ff0000, #ff6666);
+  border-radius: 2px;
+  width: 0%;
+  animation: barFill 2.2s cubic-bezier(0.4,0,0.2,1) forwards;
+  box-shadow: 0 0 10px #ff0000;
+}
+@keyframes barFill {
+  0%   { width: 0%; }
+  60%  { width: 75%; }
+  100% { width: 100%; }
+}
+
+.loader-tagline {
+  margin-top: 15px;
+  font-size: 0.65rem;
+  letter-spacing: 5px;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  animation: fadeInUp 1s 0.5s both;
+}
+
+/* Loader wipe curtains */
+.loader-curtain {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #000;
+  transition: transform 0.8s cubic-bezier(0.77,0,0.18,1);
+}
+.loader-curtain.left  { left: 0; }
+.loader-curtain.right { right: 0; }
+#cinematic-loader.wipe .loader-curtain.left  { transform: translateX(-100%); }
+#cinematic-loader.wipe .loader-curtain.right { transform: translateX(100%); }
+
+/* Loader dust particles */
+.loader-dust {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: #ff0000;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dustFloat 3s ease-in-out infinite;
+}
+@keyframes dustFloat {
+  0%,100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50%      { transform: translateY(-30px) scale(1.5); opacity: 0.2; }
+}
+
+
+/* ============================================================
+   🖱️ MAGNETIC CUSTOM CURSOR WITH LIQUID TRAIL
+   ============================================================ */
+* { cursor: none !important; }
+
+#cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: #ff0000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  box-shadow: 0 0 10px #ff0000;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(255,0,0,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999997;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.3s, height 0.3s, border-color 0.3s, opacity 0.3s;
+}
+body.cursor-hover #cursor-dot  { width: 14px; height: 14px; background: #fff; }
+body.cursor-hover #cursor-ring { width: 60px; height: 60px; border-color: #ff0000; opacity: 0.8; }
+body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.5); }
+
+.cursor-trail {
+  position: fixed;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999996;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: trailFade 0.6s forwards;
+}
+@keyframes trailFade {
+  0%   { opacity: 0.8; transform: translate(-50%,-50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%,-50%) scale(0.1); }
+}
+
+
+/* ============================================================
+   🌊 PAGE WIPE TRANSITION OVERLAY
+   ============================================================ */
+#page-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  pointer-events: none;
+  display: flex;
+}
+.wipe-panel {
+  flex: 1;
+  background: #ff0000;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.5s cubic-bezier(0.77,0,0.18,1);
+}
+.wipe-panel:nth-child(2) { transition-delay: 0.05s; }
+.wipe-panel:nth-child(3) { transition-delay: 0.10s; }
+.wipe-panel:nth-child(4) { transition-delay: 0.15s; }
+.wipe-panel:nth-child(5) { transition-delay: 0.20s; }
+
+#page-wipe.wipe-in  .wipe-panel { transform: scaleY(1); transform-origin: bottom; }
+#page-wipe.wipe-out .wipe-panel { transform: scaleY(0); transform-origin: top; }
+
+
+/* ============================================================
+   ✨ SCROLL REVEAL BASE
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1),
+              transform 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1),
+              transform 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.reveal-left.revealed { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1),
+              transform 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.reveal-right.revealed { opacity: 1; transform: translateX(0); }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1),
+              transform 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.reveal-scale.revealed { opacity: 1; transform: scale(1); }
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+
+/* ============================================================
+   🎬 KINETIC HERO TEXT REVEAL
+   ============================================================ */
+.kinetic-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.kinetic-inner {
+  display: inline-block;
+  transform: translateY(110%) skewY(8deg);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.23,1,0.32,1),
+              opacity 0.9s cubic-bezier(0.23,1,0.32,1);
+}
+.kinetic-inner.revealed {
+  transform: translateY(0) skewY(0deg);
+  opacity: 1;
+}
+
+/* Glitch effect on hero h1 hover */
+.hero h1:hover .kinetic-inner {
+  animation: glitchText 0.4s steps(2,end);
+}
+@keyframes glitchText {
+  0%   { transform: translate(2px,0); }
+  20%  { transform: translate(-2px,0); }
+  40%  { transform: translate(2px,-1px); }
+  60%  { transform: translate(-1px,1px); }
+  80%  { transform: translate(1px,0); }
+  100% { transform: translate(0); }
+}
+
+/* Floating label in hero */
+.hero-label {
+  overflow: hidden;
+}
+.hero-label-inner {
+  display: inline-block;
+  animation: floatLabel 1s 2.5s cubic-bezier(0.23,1,0.32,1) both;
+}
+@keyframes floatLabel {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Hero scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeInUp 1s 3.2s both;
+}
+.scroll-hint span {
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+.scroll-mouse {
+  width: 22px; height: 34px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.scroll-mouse-dot {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: #ff0000;
+  border-radius: 50%;
+  left: 50%; transform: translateX(-50%);
+  top: 5px;
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+@keyframes scrollDot {
+  0%,100% { top: 5px; opacity: 1; }
+  50%     { top: 18px; opacity: 0.4; }
+}
+
+/* Hero counter numbers */
+.hero-stats {
+  position: absolute;
+  bottom: 80px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  gap: clamp(30px, 6vw, 80px);
+  opacity: 0;
+  animation: fadeInUp 1s 3s both;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+}
+.hero-stat-num .counter { display: inline-block; }
+.hero-stat-label {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+
+/* ============================================================
+   💧 PARALLAX GLASS LAYER
+   ============================================================ */
+.parallax-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.parallax-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  will-change: transform;
+}
+.parallax-orb-1 { width: 500px; height: 500px; background: #ff0000; top: -100px; left: -150px; }
+.parallax-orb-2 { width: 400px; height: 400px; background: #ff3333; bottom: -100px; right: -100px; }
+.parallax-orb-3 { width: 300px; height: 300px; background: #660000; top: 50%; left: 50%; }
+
+
+/* ============================================================
+   🃏 DRAG-ENABLED PROJECT CARDS TILT
+   ============================================================ */
+.project-card {
+  will-change: transform;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.project-card-tilt-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.12), transparent 60%);
+  border-radius: 28px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.project-card:hover .project-card-tilt-shine { opacity: 1; }
+
+
+/* ============================================================
+   🔴 CARD TAG ICON RED COLOR 
+   ============================================================ */
+.card-tag i {
+  color: #ff0000 !important;
+  font-size: 0.9rem;
+  margin-right: 5px;
+  filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.6));
+  vertical-align: middle;
+}
+.card-tag {
+  color: #ffffff !important;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* ============================================================
+   ⚠️ CORE DESIGN (FIXED COLORS)
+   ============================================================ */
+html { scroll-behavior: smooth; }
+body, html {
+  margin: 0; padding: 0;
+  width: 100%;
+  background-color: #000;
+  overflow-x: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ============================================================
+   🧭 NAVIGATION
+   ============================================================ */
+nav {
+  position: fixed !important;
+  top: 0; left: 0; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 4%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 99999 !important;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+  transform: translateY(-100%);
+  animation: navSlideDown 0.8s 2.8s cubic-bezier(0.23,1,0.32,1) forwards;
+}
+@keyframes navSlideDown {
+  to { transform: translateY(0); }
+}
+
+nav.scrolled { background: rgba(0,0,0,0.97); }
+
+.nav-left { display: flex; align-items: center; gap: clamp(10px, 2vw, 15px); text-decoration: none; }
+.matrix-logo-img {
+  height: clamp(50px, 8vw, 80px); width: auto; aspect-ratio: 1/1;
+  object-fit: cover; border-radius: 50%;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.matrix-logo-img:hover {
+  transform: rotate(360deg) scale(1.1);
+  filter: drop-shadow(0 0 20px #ff0000);
+}
+
+.nav-brand {
+  font-family: 'Syne', sans-serif;
+  color: #fff !important; font-size: clamp(1rem, 4vw, 1.6rem);
+  font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.nav-brand span { color: #ff0000; }
+
+.nav-right {
+  display: flex; align-items: center;
+  gap: clamp(10px, 2.5vw, 20px);
+}
+.nav-right a {
+  color: #fff !important;
+  text-decoration: none;
+  font-size: clamp(0.65rem, 1.8vw, 0.85rem);
+  text-transform: uppercase; font-weight: 700;
+  cursor: pointer; transition: 0.3s;
+  position: relative;
+}
+.nav-right a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: #ff0000;
+  transition: width 0.3s ease;
+}
+.nav-right a:hover::after { width: 100%; }
+.nav-right a:hover { color: #ff0000 !important; text-shadow: 0 0 8px #ff0000; }
+
+/* ============================================================
+   ✨ 8-POINTED STAR ENGINE
+   ============================================================ */
+#star-container {
+  position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 1; transform-style: preserve-3d;
+  pointer-events: none; perspective: 1200px;
+}
+.star-8 {
+  position: absolute;
+  will-change: transform, opacity;
+  animation: flySmooth 6s infinite linear;
+  opacity: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.star-8-inner {
+  width: 100%; height: 100%;
+  background: currentColor;
+  clip-path: polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%);
+  position: absolute;
+  filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px currentColor);
+}
+.star-8-inner.cross { transform: rotate(45deg) scale(0.7); }
+@keyframes flySmooth {
+  0%   { transform: translate3d(0,0,-1000px) scale(0.1); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translate3d(0,0,500px) scale(2.5); opacity: 0; }
+}
+
+/* ============================================================
+   🌪️ DUST PARTICLES (persistent ambient)
+   ============================================================ */
+.dust-particle {
+  position: fixed;
+  width: 2px; height: 2px;
+  background: rgba(255,0,0,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  animation: dustDrift linear infinite;
+}
+@keyframes dustDrift {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+  25%  { transform: translateY(-20px) translateX(10px) scale(1.2); opacity: 0.5; }
+  50%  { transform: translateY(-10px) translateX(-8px) scale(0.8); opacity: 0.7; }
+  75%  { transform: translateY(-30px) translateX(5px) scale(1.1); opacity: 0.3; }
+  100% { transform: translateY(-50px) translateX(0) scale(0.5); opacity: 0; }
+}
+
+/* ============================================================
+   🦸 HERO
+   ============================================================ */
+.hero {
+  position: relative; z-index: 10;
+  height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 0 5%;
+}
+.hero-label { letter-spacing: 10px; color: #ff0000; font-weight: bold; margin-bottom: 20px; font-size: 0.85rem; }
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.5rem, 11vw, 6.5rem);
+  margin: 0; font-weight: 900; text-transform: uppercase; color: white;
+  line-height: 1.1;
+}
+.hero-sub {
+  color: #fff; letter-spacing: 2px; margin-top: 15px; font-size: 0.85rem; font-weight: 600;
+  opacity: 0;
+  animation: fadeInUp 1s 2.8s both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   📜 ABOUT SECTION
+   ============================================================ */
+.about-section {
+  position: relative; z-index: 10;
+  padding: 150px 0 100px;
+  background-color: transparent;
+  overflow: hidden;
+}
+.about-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  font-weight: 800; line-height: 1.1;
+  text-transform: uppercase; color: #fff !important;
+}
+.availability-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 18px; border-radius: 50px;
+  margin-top: 30px; font-size: 0.85rem; color: #fff;
+  transition: all 0.4s ease;
+}
+.availability-tag:hover {
+  background: rgba(255,0,0,0.1);
+  border-color: rgba(255,0,0,0.4);
+  transform: scale(1.03);
+}
+.status-dot {
+  width: 8px; height: 8px; background: #ff0000;
+  border-radius: 50%; box-shadow: 0 0 10px #ff0000;
+  animation: pulse-red 2s infinite;
+}
+
+/* WhatsApp glow */
+.whatsapp-glow-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 45px; height: 45px;
+  background: rgba(255, 0, 0, 0.05);
   border: 1px solid rgba(255, 0, 0, 0.3);
   border-radius: 50%;
   color: #ff0000 !important;
@@ -171,615 +662,715 @@
   text-decoration: none;
   transition: all 0.4s ease;
   backdrop-filter: blur(5px);
-  position: relative;
-  /* Natural Pulse Animation */
   animation: whatsapp-pulse 2s infinite;
 }
-
 .whatsapp-glow-btn:hover {
   background: rgba(255, 0, 0, 0.2);
   border-color: #ff0000;
   box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), inset 0 0 10px rgba(255, 0, 0, 0.4);
   transform: scale(1.1) rotate(10deg);
-  color: #fff !important; /* Hover panna icon white-ah maarum for premium look */
+  color: #fff !important;
 }
-
-/* Pulse Effect */
 @keyframes whatsapp-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-  }
+  0%   { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+@keyframes pulse-red { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); } }
+
+/* Info Cards */
+.info-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 22px; border-radius: 12px;
+  margin-bottom: 15px; transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  position: relative; overflow: hidden;
+}
+.info-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #ff0000;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s ease;
+}
+.info-card:hover::before { transform: scaleY(1); }
+.info-card:hover {
+  border-color: #ff0000;
+  background: rgba(255, 0, 0, 0.08);
+  transform: translateX(10px);
+  box-shadow: 0 0 20px rgba(255,0,0,0.1);
+}
+.card-label { font-size: 0.7rem; color: #ff0000; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+.card-value { font-size: 1.1rem; color: #fff !important; font-weight: 700; margin: 0; }
+.about-description { font-size: 1.2rem; color: #fff !important; line-height: 1.6; }
+
+@media (max-width: 991px) {
+  .about-section { text-align: center; }
+  .nav-right { gap: 12px; }
 }
 
-    @keyframes pulse-red { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); } }
-
-    /* Info Cards */
-    .info-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 22px; border-radius: 12px;
-      margin-bottom: 15px; transition: 0.3s;
-    }
-    .info-card:hover { border-color: #ff0000; background: rgba(255, 0, 0, 0.08); transform: translateX(10px); }
-    
-    .card-label { font-size: 0.7rem; color: #ff0000; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-    .card-value { font-size: 1.1rem; color: #fff !important; font-weight: 700; margin: 0; }
-    .about-description { font-size: 1.2rem; color: #fff !important; line-height: 1.6; }
-
-    @media (max-width: 991px) {
-      .about-section { text-align: center; }
-      .nav-right { gap: 12px; }
-    }
-
-
-  /* --- 📜 PROJECTS  SECTION --- */
-/* --- 💎 MATRIX BYTES: PROJECTS & MAGIC FOOTER CSS --- */
-
+/* ============================================================
+   📁 PROJECTS SECTION
+   ============================================================ */
 .projects-section {
-    padding: 80px 5%;
-    background: transparent !important;
-    position: relative;
-    z-index: 10;
+  padding: 80px 5%;
+  background: transparent !important;
+  position: relative;
+  z-index: 10;
 }
-
-/* Typography */
 .project-main-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: 800;
-    color: white;
-    line-height: 1.1;
-    text-transform: none;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  text-transform: none;
 }
-
 .red-text { color: #ff0000 !important; }
-
-/* Grid Layout */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
-
 .project-card-link { text-decoration: none !important; color: inherit; }
 
-/* 💎 Perfect Glass Card Style */
+/* 💎 Glass Card */
 .project-card {
-    background: rgba(255, 255, 255, 0.04) !important;
-    backdrop-filter: blur(15px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(15px) saturate(160%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    padding: 40px;
-    border-radius: 28px;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    display: flex;
-    flex-direction: column;
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(15px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  padding: 40px;
+  border-radius: 28px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
 }
-
-/* Reflecting Shine Sweep */
 .project-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-    transition: 0.6s ease;
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transition: 0.6s ease;
 }
-
 .project-card:hover {
-    transform: translateY(-12px);
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(255, 0, 0, 0.5) !important;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.15);
+  transform: translateY(-12px) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 0, 0, 0.5) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.15);
 }
-
 .project-card:hover::before { left: 100%; }
-
-.card-tag {
-    color: #ff0000 !important;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
 .project-card h3 {
-    font-family: 'Syne', sans-serif;
-    color: white !important;
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 15px;
+  font-family: 'Syne', sans-serif;
+  color: white !important;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 15px;
 }
-
 .project-card p {
-    color: #bbbbbb !important;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    font-size: 0.95rem;
+  color: #bbbbbb !important;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
 }
-
 .tech-stack { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
 .tech-stack span {
-    font-size: 0.6rem;
-    background: rgba(255, 255, 255, 0.05);
-    color: #ccc;
-    padding: 5px 15px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  padding: 5px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.tech-stack span:hover {
+  background: rgba(255,0,0,0.1);
+  border-color: rgba(255,0,0,0.4);
+  color: #fff;
 }
 
-/* --- 🌠 MAGIC FOOTER: WHITE TO RED GLOW --- */
+/* ============================================================
+   🌠 MAGIC FOOTER CTA
+   ============================================================ */
 .magic-cta {
-    font-family: 'Syne', sans-serif;
-    color: #ffffff !important; /* Normal: White */
-    text-decoration: none !important;
-    font-weight: 900;
-    font-size: clamp(1.4rem, 5vw, 2.2rem);
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    position: relative;
-    transition: all 0.4s ease;
-    z-index: 100;
+  font-family: 'Syne', sans-serif;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 5vw, 2.2rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  transition: all 0.4s ease;
+  z-index: 100;
 }
-
-.magic-cta:hover {
-    color: #ff0000 !important; /* Hover: Red */
-    text-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.7);
-    transform: scale(1.05);
-}
-
+.magic-cta:hover { color: #ff0000 !important; text-shadow: 0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.7); transform: scale(1.05); }
 .magic-arrow-wrapper { position: relative; transition: 0.3s ease; }
 .magic-cta:hover .magic-arrow-wrapper { transform: translateX(15px); color: #ff0000; }
-
-/* 10 Stars Trail */
 .magic-star-container { position: absolute; top: 50%; left: 10px; transform: translateY(-50%); pointer-events: none; }
 .m-star { position: absolute; width: 12px; height: 12px; color: #ff0000; opacity: 0; animation: magicShoot 4s infinite linear; }
 .m-star .star-8-inner {
-    width: 100%; height: 100%; background: currentColor;
-    clip-path: polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%);
-    position: absolute; filter: drop-shadow(0 0 8px #ff0000);
+  width: 100%; height: 100%; background: currentColor;
+  clip-path: polygon(50% 0%, 55% 45%, 100% 50%, 55% 55%, 50% 100%, 45% 55%, 0% 50%, 45% 45%);
+  position: absolute; filter: drop-shadow(0 0 8px #ff0000);
 }
-
 @keyframes magicShoot {
-    0% { transform: translate(0, -50%) scale(0); opacity: 0; }
-    5% { opacity: 1; transform: translate(10px, -50%) scale(1); }
-    100% { transform: translate(90vw, -50%) scale(1.5); opacity: 0; }
+  0%   { transform: translate(0, -50%) scale(0); opacity: 0; }
+  5%   { opacity: 1; transform: translate(10px, -50%) scale(1); }
+  100% { transform: translate(90vw, -50%) scale(1.5); opacity: 0; }
 }
-
-/* Delays */
 .s1 { animation-delay: 0s; } .s2 { animation-delay: 0.4s; }
 .s3 { animation-delay: 0.8s; } .s4 { animation-delay: 1.2s; }
 .s5 { animation-delay: 1.6s; } .s6 { animation-delay: 2.0s; }
 .s7 { animation-delay: 2.4s; } .s8 { animation-delay: 2.8s; }
 .s9 { animation-delay: 3.2s; } .s10 { animation-delay: 3.6s; }
 
-/* --- 💎 SERVICES SECTION GLASSY STYLES --- */
-/* --- 💎 MATRIX BYTES: SERVICES SECTION FULL CSS --- */
-
+/* ============================================================
+   💎 SERVICES SECTION
+   ============================================================ */
 .services-section {
-    position: relative;
-    z-index: 10;
-    padding: 80px 5%;
-    background: transparent !important;
+  position: relative; z-index: 10;
+  padding: 80px 5%;
+  background: transparent !important;
 }
-
-/* 1. Header & Typography */
-.services-header {
-    margin-bottom: 60px;
-}
-
-.red-text { 
-    color: #ff0000 !important; 
-}
-
-/* 2. 💎 PREMIUM GLASSY SERVICE CARD */
+.services-header { margin-bottom: 60px; }
 .service-card {
-    /* Base Glass Layer */
-    background: rgba(255, 255, 255, 0.04) !important;
-    backdrop-filter: blur(15px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(15px) saturate(160%) !important;
-    
-    /* Crystal Edge */
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    
-    padding: clamp(25px, 5vw, 40px);
-    border-radius: 28px;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(15px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  padding: clamp(25px, 5vw, 40px);
+  border-radius: 28px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
-
-/* Reflecting Shine Sweep (Hover-la vara flash) */
 .service-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: -150%;
-    width: 100%; height: 100%;
-    background: linear-gradient(
-        120deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.1), 
-        transparent
-    );
-    transition: 0.8s ease;
+  content: "";
+  position: absolute;
+  top: 0; left: -150%;
+  width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.8s ease;
 }
-
-.service-card:hover::before {
-    left: 150%;
-}
-
+.service-card:hover::before { left: 150%; }
 .service-card:hover {
-    transform: translateY(-12px);
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(255, 0, 0, 0.5) !important; /* Matrix Red Border */
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.2);
+  transform: translateY(-12px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 0, 0, 0.5) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.2);
 }
-
-/* 3. 🔴 RED ICONS STYLING */
 .service-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ff0000 !important; /* Force Red */
-    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
-    transition: 0.4s ease;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ff0000 !important;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
+  transition: 0.4s ease;
+  display: inline-block;
 }
-
-.service-card:hover .service-icon {
-    transform: scale(1.15) rotate(5deg);
-    filter: drop-shadow(0 0 15px #ff0000);
-}
-
-/* 4. Content Typography */
-.price-tag {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 8px;
-}
-
-.price-tag span {
-    font-size: 0.85rem;
-    opacity: 0.6;
-    font-weight: 400;
-}
-
-.service-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 15px;
-}
-
-.service-desc {
-    color: #bbbbbb !important;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-.service-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 30px;
-    flex-grow: 1;
-}
-
-.service-list li {
-    color: #eeeeee;
-    font-size: 0.85rem;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* 5. 🔘 GET A QUOTE BUTTONS */
+.service-card:hover .service-icon { transform: scale(1.15) rotate(5deg); filter: drop-shadow(0 0 15px #ff0000); }
+.price-tag { font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 8px; }
+.price-tag span { font-size: 0.85rem; opacity: 0.6; font-weight: 400; }
+.service-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 15px; }
+.service-desc { color: #bbbbbb !important; font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; }
+.service-list { list-style: none; padding: 0; margin-bottom: 30px; flex-grow: 1; }
+.service-list li { color: #eeeeee; font-size: 0.85rem; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; transition: color 0.3s, transform 0.3s; }
+.service-list li:hover { color: #fff; transform: translateX(5px); }
 .service-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none !important;
-    padding: 14px;
-    border-radius: 15px;
-    font-weight: 800;
-    font-size: 0.95rem;
-    transition: all 0.4s ease;
-    margin-top: auto;
+  display: block; width: 100%; text-align: center;
+  text-decoration: none !important;
+  padding: 14px; border-radius: 15px;
+  font-weight: 800; font-size: 0.95rem;
+  transition: all 0.4s ease; margin-top: auto;
 }
-
 .service-btn:not(.red-bg) {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
-
-.service-btn:not(.red-bg):hover {
-    background: #ffffff !important;
-    color: #000000 !important;
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-}
-
-.red-bg {
-    background: #ff0000 !important;
-    color: #ffffff !important;
-    border: 1px solid #ff0000 !important;
-}
-
-.red-bg:hover {
-    background: #cc0000 !important;
-    box-shadow: 0 0 20px #ff0000;
-    transform: translateY(-3px);
-}
-
-/* 6. Popular Badge */
+.service-btn:not(.red-bg):hover { background: #ffffff !important; color: #000000 !important; box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2); }
+.red-bg { background: #ff0000 !important; color: #ffffff !important; border: 1px solid #ff0000 !important; }
+.red-bg:hover { background: #cc0000 !important; box-shadow: 0 0 20px #ff0000; transform: translateY(-3px); }
 .popular-badge {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: #ff0000;
-    color: white;
-    font-size: 0.6rem;
-    font-weight: 800;
-    padding: 5px 12px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  position: absolute; top: 20px; right: 25px;
+  background: #ff0000; color: white;
+  font-size: 0.6rem; font-weight: 800;
+  padding: 5px 12px; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: 1px;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,0,0,0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba(255,0,0,0); }
 }
 
-/* Desktop vs Mobile Responsive */
-@media (max-width: 768px) {
-    .services-header { text-align: center; }
-    .service-card { padding: 30px 25px; }
-    .project-main-title { font-size: 2.2rem; }
-}
-
-/* --- 💎 INTERCHANGED CONTACT & FOOTER CSS --- */
-
-/* 1. Glass Card - Stronger Reflection */
+/* ============================================================
+   📬 CONTACT SECTION
+   ============================================================ */
 .contact-section {
-    position: relative;
-    z-index: 10;
-    padding: 100px 5%;
-    background: transparent !important;
+  position: relative; z-index: 10;
+  padding: 100px 5%;
+  background: transparent !important;
 }
-    .contact-glass-card {
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(25px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    padding: 45px;
-    border-radius: 35px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-}
-
 .contact-glass-card {
-    background: rgba(255, 255, 255, 0.05) !important;
-    backdrop-filter: blur(25px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    padding: 45px;
-    border-radius: 35px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(25px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  padding: 45px;
+  border-radius: 35px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  transition: box-shadow 0.5s ease;
 }
-
-/* Reflecting Shine Sweep */
+.contact-glass-card:hover { box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 30px rgba(255,0,0,0.1); }
 .contact-glass-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: -150%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: 0.8s ease;
+  content: "";
+  position: absolute;
+  top: 0; left: -150%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.8s ease;
 }
+.contact-glass-card:hover::before { left: 150%; }
+.contact-section h2, .contact-section h3, .contact-section h4, .contact-section h6 { color: #ffffff !important; font-weight: 800; }
+.contact-section p, .faq-row p, .contact-details-box span { color: #ffffff !important; opacity: 0.95; line-height: 1.6; }
 
-.contact-glass-card:hover::before {
-    left: 150%;
-}
-
-.contact-section h2, 
-.contact-section h3, 
-.contact-section h4, 
-.contact-section h6 {
-    color: #ffffff !important;
-    font-weight: 800;
-}
-
-.contact-section p, 
-.faq-row p, 
-.contact-details-box span {
-    color: #ffffff !important; /* Ash thookittu Pure White mathittaen */
-    opacity: 0.95;
-    line-height: 1.6;
-}
-
-.red-text {
-    color: #ff0000 !important;
-    opacity: 1 !important;
-}
-/* 2. Matrix Inputs */
 .matrix-input {
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: white !important;
-    padding: 15px !important;
-    border-radius: 15px !important;
-    font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  padding: 15px !important;
+  border-radius: 15px !important;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
 }
-.matrix-input::placeholder {
-    color: rgba(255, 255, 255, 0.6) !important;
-}
+.matrix-input::placeholder { color: rgba(255, 255, 255, 0.6) !important; }
+.matrix-input:focus { border-color: #ff0000 !important; box-shadow: 0 0 20px rgba(255,0,0,0.2) !important; transform: scale(1.01); }
 
-.matrix-input:focus {
-    border-color: #ff0000 !important;
-    box-shadow: 0 0 20px rgba(255,0,0,0.2) !important;
-}
-
-
-/* 3. Info Tile Grid (Better than list) */
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .info-tile {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 20px;
-    text-decoration: none !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    transition: 0.4s;
-    border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px; border-radius: 20px;
+  text-decoration: none !important;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  border: 1px solid transparent;
+  position: relative; overflow: hidden;
 }
-
-.info-tile i { color: #ff0000; font-size: 1.5rem; }
+.info-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,0,0,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.info-tile:hover::before { opacity: 1; }
+.info-tile i { color: #ff0000; font-size: 1.5rem; transition: transform 0.3s; }
 .info-tile span { color: white; font-weight: 700; font-size: 0.8rem; }
+.info-tile:hover { border-color: #ff0000; background: rgba(255, 0, 0, 0.05); transform: translateY(-5px); }
+.info-tile:hover i { transform: scale(1.2) rotate(-10deg); }
 
-.info-tile:hover {
-    border-color: #ff0000;
-    background: rgba(255, 0, 0, 0.05);
-    transform: translateY(-5px);
-}
-
-/* 4. Magic Buttons */
 .magic-cta-btn {
-    width: 100%;
-    background: #ff0000;
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 15px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    transition: 0.4s;
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+  width: 100%; background: #ff0000; color: white;
+  border: none; padding: 15px; border-radius: 15px;
+  font-weight: 900; letter-spacing: 1px;
+  transition: all 0.4s; box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
 }
+.magic-cta-btn:hover { background: #cc0000; box-shadow: 0 0 30px #ff0000; transform: scale(1.02); }
 
-.magic-cta-btn:hover {
-    background: #cc0000;
-    box-shadow: 0 0 30px #ff0000;
-    transform: scale(1.02);
+.transmit-btn-sleek {
+  grid-column: span 2; margin-top: 10px;
+  padding: 14px 25px; width: fit-content;
+  justify-self: center;
+  background: transparent; color: #ff0000;
+  border: 1px solid #ff0000; border-radius: 50px;
+  font-weight: 700; font-size: 0.85rem;
+  cursor: pointer; transition: all 0.4s ease;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  letter-spacing: 1px; position: relative; overflow: hidden;
 }
+.transmit-btn-sleek::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: #ff0000;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+.transmit-btn-sleek span, .transmit-btn-sleek i { position: relative; z-index: 1; }
+.transmit-btn-sleek:hover { color: white; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); transform: translateY(-3px); }
+.transmit-btn-sleek:hover::before { transform: translateX(0); }
+.transmit-btn-sleek i { font-size: 1rem; }
 
-/* 5. Footer Stars Engine (Interchange to White-to-Red) */
 .magic-cta-footer {
-    color: white !important;
-    text-decoration: none !important;
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    font-weight: 900;
-    font-family: 'Syne', sans-serif;
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    transition: 0.4s;
+  color: white !important; text-decoration: none !important;
+  font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900;
+  font-family: 'Syne', sans-serif;
+  display: inline-flex; align-items: center; gap: 15px;
+  transition: 0.4s;
 }
+.magic-cta-footer:hover { color: #ff0000 !important; text-shadow: 0 0 25px #ff0000; }
 
-.magic-cta-footer:hover {
-    color: #ff0000 !important;
-    text-shadow: 0 0 25px #ff0000;
-}
-
-/* Copy Stars Logic from previous response here... */
-
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .info-grid { grid-template-columns: 1fr; }
-    .contact-glass-card { padding: 30px 20px; }
-    .footer-matrix { text-align: center; }
-}
-/* --- 🔴 CARD TAG ICON RED COLOR --- */
-
-.card-tag i {
-    color: #ff0000 !important; /* Matrix Red Force */
-    font-size: 0.9rem;
-    margin-right: 5px;
-    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.6)); /* Subtle Glow */
-    vertical-align: middle;
+  .info-grid { grid-template-columns: 1fr; }
+  .contact-glass-card { padding: 30px 20px; }
+  .footer-matrix { text-align: center; }
+  .hero-stats { gap: 20px; }
+  * { cursor: auto !important; }
+  #cursor-dot, #cursor-ring { display: none; }
 }
 
-.card-tag {
-    color: #ffffff !important; /* Text White-ahve irukkum */
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+/* ============================================================
+   🔢 NUMBER COUNTER ANIMATION
+   ============================================================ */
+.count-up { display: inline-block; }
+
+/* ============================================================
+   🎯 SECTION TITLE UNDERLINE ANIMATION
+   ============================================================ */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, #ff0000, rgba(255,0,0,0.3));
+  transition: width 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.animated-underline.revealed::after { width: 100%; }
+
+/* ============================================================
+   🌈 HORIZONTAL SCROLL MARQUEE (section dividers)
+   ============================================================ */
+.marquee-wrap {
+  overflow: hidden;
+  border-top: 1px solid rgba(255,0,0,0.15);
+  border-bottom: 1px solid rgba(255,0,0,0.15);
+  padding: 12px 0;
+  position: relative; z-index: 10;
+  background: rgba(255,0,0,0.02);
+}
+.marquee-track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: marqueeScroll 20s linear infinite;
+}
+.marquee-item {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 15px;
+}
+.marquee-item .dot { width: 4px; height: 4px; background: #ff0000; border-radius: 50%; }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   📊 SKILL BAR ANIMATION (About section addition)
+   ============================================================ */
+.skill-bars { margin-top: 30px; }
+.skill-bar-item { margin-bottom: 18px; }
+.skill-bar-label {
+  display: flex; justify-content: space-between;
+  font-size: 0.75rem; font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase; letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.skill-bar-track {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px; overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff0000, #ff6666);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.23,1,0.32,1);
+  box-shadow: 0 0 10px rgba(255,0,0,0.5);
+}
+
+/* ============================================================
+   🖼️ IMAGE HOVER ZOOM EFFECT (logo)
+   ============================================================ */
+.logo-hover-wrap {
+  overflow: hidden; border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============================================================
+   ✍️ TEXT SCRAMBLE ANIMATION
+   ============================================================ */
+.scramble-text { display: inline; }
+
+/* ============================================================
+   🎪 FOOTER
+   ============================================================ */
+.footer-matrix { position: relative; z-index: 10; }
+
+/* ============================================================
+   📱 MOBILE RESPONSIVE FIXES
+   ============================================================ */
+@media (max-width: 576px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; gap: 15px; bottom: 60px; }
+}
+
+/* ============================================================
+   🌙 SMOOTH SECTION TRANSITIONS (opacity-based)
+   ============================================================ */
+section { position: relative; }
+
+/* Glow line between sections */
+.section-glow-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,0,0,0.3), transparent);
+  position: relative; z-index: 10;
+  margin: 0;
+}
+
+/* ============================================================
+   ⬆️ BACK TO TOP BUTTON
+   ============================================================ */
+#back-top {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  width: 44px; height: 44px;
+  background: rgba(255,0,0,0.1);
+  border: 1px solid rgba(255,0,0,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #ff0000;
+  font-size: 1rem;
+  z-index: 9999;
+  opacity: 0; transform: translateY(20px);
+  transition: all 0.4s ease;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+}
+#back-top.show { opacity: 1; transform: translateY(0); }
+#back-top:hover { background: #ff0000; color: #fff; box-shadow: 0 0 20px rgba(255,0,0,0.5); transform: translateY(-3px); }
+/* Cat & Mouse Fleeing Icons Style */
+
+
+
+.flee-icon {
+  position: absolute;
+  width: 70px;  /* Outer boundary perusu */
+  height: 70px;
+  color: #ff0000;
+  font-size: 45px; /* Icon size ippo nalla perusa theriyum */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
+  transition: transform 0.2s ease-out, opacity 0.3s;
+  opacity: 0.4;
+  z-index: 5;
 }
 </style>
 </head>
 <body>
+    <!-- ============================================================
+     🧙‍♂️ FLEE ICONS LAYER (for random magic sparkles)
+     ============================================================ -->
+<div id="flee-icons-layer" style="position: fixed; inset: 0; pointer-events: none; z-index: 2;"></div>
+<!-- ============================================================
+     🔴 CINEMATIC LOADER
+     ============================================================ -->
+<div id="cinematic-loader">
+  <div class="loader-curtain left"></div>
+  <div class="loader-curtain right"></div>
 
-  <div id="star-container"></div>
+  <div class="loader-logo-morph">
+    <div class="loader-ring"></div>
+    <div class="loader-ring"></div>
+    <div class="loader-ring"></div>
+    <div class="loader-ring"></div>
+    <div class="loader-center-dot"></div>
+  </div>
 
-  <nav>
-    <a href="#" class="nav-left">
-      <img src="images/logo.png" alt="Logo" class="matrix-logo-img">
-      <div class="nav-brand">MATRIX <span>BYTES</span></div>
+  <div class="loader-brand" id="loaderBrand"></div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-tagline">DESIGN FAST · DEPLOY SMART · GROW BIG</div>
+</div>
+
+<!-- ============================================================
+     🖱️ CUSTOM CURSOR
+     ============================================================ -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ============================================================
+     🌊 PAGE WIPE OVERLAY
+     ============================================================ -->
+<div id="page-wipe">
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+</div>
+
+<!-- ============================================================
+     ⬆️ BACK TO TOP
+     ============================================================ -->
+<a href="#" id="back-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></a>
+
+<!-- ============================================================
+     ✨ STARS
+     ============================================================ -->
+<div id="star-container"></div>
+
+<!-- ============================================================
+     🧭 NAV
+     ============================================================ -->
+<nav id="mainNav">
+  <a href="#" class="nav-left">
+    <img src="images/logo.png" alt="Logo" class="matrix-logo-img">
+    <div class="nav-brand">MATRIX <span>BYTES</span></div>
+  </a>
+  <div class="nav-right">
+    <a onclick="smoothScroll('about')">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/916379028897?text=Hi%20Madhavan%2C%20I%20just%20saw%20your%20portfolio%20at%20Matrix%20Bytes!%20🚀%20I'd%20like%20to%20start%20a%20magic%20project%20with%20you.%20Can%20we%20discuss?" target="_blank" class="whatsapp-glow-btn">
+      <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <div class="nav-right">
-      <a onclick="smoothScroll('about')">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a> 
-      <a href="https://wa.me/916379028897?text=Hi%20Madhavan%2C%20I%20just%20saw%20your%20portfolio%20at%20Matrix%20Bytes!%20🚀%20I'd%20like%20to%20start%20a%20magic%20project%20with%20you.%20Can%20we%20discuss?" target="_blank" class="whatsapp-glow-btn">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     🦸 HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="parallax-bg">
+    <div class="parallax-orb parallax-orb-1" data-speed="0.3"></div>
+    <div class="parallax-orb parallax-orb-2" data-speed="0.5"></div>
+    <div class="parallax-orb parallax-orb-3" data-speed="0.2"></div>
+  </div>
+
+  <div class="hero-label">
+    <span class="hero-label-inner">INNOVATION BYTES</span>
+  </div>
+
+  <h1>
+    <span class="kinetic-word"><span class="kinetic-inner" style="transition-delay:0.1s">MATRIX</span></span>
+    &nbsp;
+    <span class="kinetic-word"><span class="kinetic-inner" style="color:#ff0000;text-shadow:0 0 25px rgba(255,0,0,0.6);transition-delay:0.3s">BYTES</span></span>
+  </h1>
+
+  <p class="hero-sub">DESIGN FAST. DEPLOY SMART. GROW BIG.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span class="count-up" data-target="20">0</span>+</div>
+      <div class="hero-stat-label">Projects</div>
     </div>
-  </nav>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span class="count-up" data-target="15">0</span>+</div>
+      <div class="hero-stat-label">Clients</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span class="count-up" data-target="3">0</span></div>
+      <div class="hero-stat-label">Cities</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><span class="count-up" data-target="100">0</span>%</div>
+      <div class="hero-stat-label">On-Time</div>
+    </div>
+  </div>
 
-  <section class="hero">
-    <div class="hero-label">INNOVATION BYTES</div>
-    <h1>MATRIX <span style="color: #ff0000; text-shadow: 0 0 25px rgba(255,0,0,0.6);">BYTES</span></h1>
-    <p style="color: #fff; letter-spacing: 2px; margin-top: 15px; font-size: 0.85rem; font-weight: 600;">DESIGN FAST. DEPLOY SMART. GROW BIG.</p>
-  </section>
+  <div class="scroll-hint">
+    <div class="scroll-mouse"><div class="scroll-mouse-dot"></div></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-  <section id="about" class="about-section">
+<!-- MARQUEE DIVIDER -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- ============================================================
+     📜 ABOUT
+     ============================================================ -->
+<section id="about" class="about-section">
+  <div class="parallax-bg">
+    <div class="parallax-orb parallax-orb-1" data-speed="0.4" style="top:auto;bottom:-150px;left:auto;right:-200px;"></div>
+  </div>
   <div class="container">
     <div class="row g-5 align-items-start">
-      
-      <div class="col-lg-6">
+
+      <div class="col-lg-6 reveal-left">
         <span style="color: #ff0000; font-weight: 800; font-size: 0.9rem; letter-spacing: 3px;">ABOUT</span>
         <h2 class="about-title mt-3">
-          Creative <span style="color:#ff0000">Agency</span> from <br>
+          Creative <span style="color:#ff0000" class="animated-underline">Agency</span> from <br>
           India, building for <br>
           the <span style="color:#ff0000">Future.</span>
         </h2>
-        <div class="availability-tag">
+        <div class="availability-tag mt-4">
           <span class="status-dot"></span> Ready for innovations
+        </div>
+
+        <!-- Skill Bars -->
+        <div class="skill-bars mt-5 reveal delay-2">
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Web Development</span><span>95%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-fill="95"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>UI/UX Design</span><span>88%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-fill="88"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Full-Stack Dev</span><span>82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-fill="82"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Digital Marketing</span><span>75%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-fill="75"></div></div>
+          </div>
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-6 reveal-right">
         <p class="about-description mb-4">
           We are a collective of developers and designers based in India. We build modern, high-speed websites and scalable digital solutions for brands, startups, and innovators.
         </p>
-        
+
         <div class="info-cards">
-          <div class="info-card">
+          <div class="info-card reveal delay-1">
             <div class="d-flex align-items-center gap-3">
               <i class="fa-solid fa-location-crosshairs fs-4" style="color: #ff0000;"></i>
               <div>
@@ -788,28 +1379,25 @@
               </div>
             </div>
           </div>
-
-          <div class="info-card">
+          <div class="info-card reveal delay-2">
             <div class="d-flex align-items-center gap-3">
-             <i class="fa-solid fa-location-crosshairs fs-4" style="color: #ff0000;"></i>
+              <i class="fa-solid fa-location-crosshairs fs-4" style="color: #ff0000;"></i>
               <div>
                 <div class="card-label">EXPERTISE</div>
                 <p class="card-value">Full-Stack & Automation</p>
               </div>
             </div>
           </div>
-
-          <div class="info-card">
+          <div class="info-card reveal delay-3">
             <div class="d-flex align-items-center gap-3">
-            <i class="fa-solid fa-language fs-4" style="color: #ff0000;"></i>
+              <i class="fa-solid fa-language fs-4" style="color: #ff0000;"></i>
               <div>
                 <div class="card-label">COMMUNICATION</div>
                 <p class="card-value">Tamil • English • Telugu</p>
               </div>
             </div>
           </div>
-
-          <div class="info-card">
+          <div class="info-card reveal delay-4">
             <div class="d-flex align-items-center gap-3">
               <i class="fa-solid fa-terminal fs-4" style="color: #ff0000;"></i>
               <div>
@@ -819,118 +1407,106 @@
             </div>
           </div>
 
-        <div class="mt-4 pt-3 border-top border-secondary opacity-90">
-    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
-        <span class="small text-white opacity-75">
-            &bull; Last updated: April 2026
-        </span>
-        
-        <span class="d-flex align-items-center gap-2 py-1">
-            
-            <i class="fa-solid fa-circle-check" style="color: #ff0000;"></i> 
-            <span class="fw-bold small text-white text-uppercase tracking-wider">Verified Developer Entity</span>
-        </span>
-    </div>
-</div>
-        </div> 
+          <div class="mt-4 pt-3 border-top border-secondary opacity-90">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+              <span class="small text-white opacity-75">&bull; Last updated: April 2026</span>
+              <span class="d-flex align-items-center gap-2 py-1">
+                <i class="fa-solid fa-circle-check" style="color: #ff0000;"></i>
+                <span class="fw-bold small text-white text-uppercase tracking-wider">Verified Developer Entity</span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
 
+<div class="section-glow-line"></div>
+
+<!-- ============================================================
+     📁 PROJECTS
+     ============================================================ -->
 <section id="projects" class="projects-section">
-    <div class="container">
-        
-        <div class="work-header-bar mb-5">
-            <span class="card-tag">WORK</span>
-            <h2 class="project-main-title mt-3">
-                Projects that <br>
-                <span class="red-text">Ship & Deliver</span>
-            </h2>
+  <div class="container">
+    <div class="work-header-bar mb-5 reveal">
+      <span class="card-tag">WORK</span>
+      <h2 class="project-main-title mt-3">
+        Projects that <br>
+        <span class="red-text animated-underline">Ship & Deliver</span>
+      </h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <a href="https://madhavan1341.github.io/vvs-ginger/" target="_blank" class="project-card-link reveal delay-1">
+        <div class="project-card" data-tilt>
+          <div class="project-card-tilt-shine"></div>
+          <div class="card-tag"><i class="fa-solid fa-leaf me-1"></i> OWN BUSINESS</div>
+          <h3>VVS Ginger Candy</h3>
+          <p>Complete brand website for traditional herbal sweets, featuring high-quality assets and clean UI.</p>
+          <div class="tech-stack"><span>HTML5</span> <span>CSS3</span> <span>Branding</span></div>
         </div>
+      </a>
 
-        <div class="projects-grid">
-            
-            <a href="https://madhavan1341.github.io/vvs-ginger/" target="_blank" class="project-card-link">
-                <div class="project-card">
-                    <div class="card-tag"><i class="fa-solid fa-leaf me-1"></i> OWN BUSINESS</div>
-                    <h3>VVS Ginger Candy</h3>
-                    <p>Complete brand website for traditional herbal sweets, featuring high-quality assets and clean UI.</p>
-                    <div class="tech-stack">
-                        <span>HTML5</span> <span>CSS3</span> <span>Branding</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://madhavan1341.github.io/rainbow-residency/" target="_blank" class="project-card-link">
-                <div class="project-card">
-                    <div class="card-tag">
-    <i class="fa-solid fa-hotel me-1"></i> HOSPITALITY
-</div>
-                    <h3>Rainbow Residency</h3>
-                    <p>A premium stay-booking platform with room variants and direct WhatsApp booking integration.</p>
-                    <div class="tech-stack">
-                        <span>Responsive</span> <span>UI/UX</span> <span>Business</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://madhavan1341.github.io/amalfi-restaurant/" target="_blank" class="project-card-link">
-                <div class="project-card">
-                    <div class="card-tag">
-    <i class="fa-solid fa-star me-1"></i> CLIENT PROJECT
-</div>
-                    <h3>Amalfy Italian Restaurant</h3>
-                    <p>Premium restaurant landing page with an immersive dining UI experience.</p><div class="tech-stack">
-                        <span>React</span> <span>Immersive UI</span>
-                    </div>
-                </div>
-            </a>
-            <a href="#" target="_blank" class="project-card-link">
-                <div class="project-card">
-                 <div class="card-tag">
-     <i class="fa-solid fa-star me-1"></i>  RECENT LAUNCH
-</div> <h3>Priyan Beach View Residency</h3>
-                   <p>Resort experience showcasing authentic hospitality & pool views.</p> <div class="tech-stack">
-                        <span>Luxury Theme</span> <span>Netlify</span>
-                    </div>
-                </div>
-            </a>
-            <a href="#" target="_blank" class="project-card-link">
-                <div class="project-card">
-                    <div class="card-tag">
-                         <i class="fa-solid fa-star me-1"></i>  CLIENT PROJECT</div>
-                    <h3>Ronazio Beach View Residency</h3>
-                    <p>Digital presence and booking management for a luxury poolside property in Hyderabad.</p>
-                    <div class="tech-stack">
-                        <span>Mobile Reaady</span> <span>Modern UI</span>
-                    </div>
-                </div>
-            </a>
-            <a href="#" target="_blank" class="project-card-link">
-                <div class="project-card">
-                    <div class="card-tag">
-                         <i class="fa-solid fa-star me-1"></i> 
-                             PREMIUM VILLA</div>
-                    <h3>The Vintage Poolside</h3>
-                    <p>Digital presence and booking management for a luxury poolside property in Pondicherry.</p>
-                    <div class="tech-stack">
-                        <span>3D Visuals</span> <span>Interactive</span>
-                    </div>
-                </div>
-            </a>
-
+      <a href="https://madhavan1341.github.io/rainbow-residency/" target="_blank" class="project-card-link reveal delay-2">
+        <div class="project-card" data-tilt>
+          <div class="project-card-tilt-shine"></div>
+          <div class="card-tag"><i class="fa-solid fa-hotel me-1"></i> HOSPITALITY</div>
+          <h3>Rainbow Residency</h3>
+          <p>A premium stay-booking platform with room variants and direct WhatsApp booking integration.</p>
+          <div class="tech-stack"><span>Responsive</span> <span>UI/UX</span> <span>Business</span></div>
         </div>
+      </a>
 
-        <div class="mt-5 pt-5 text-center position-relative overflow-hidden" style="min-height: 180px;">
-           <a href="https://wa.me/916379028897?text=Hi%20Madhavan%2C%20I%20just%20saw%20your%20portfolio%20at%20Matrix%20Bytes!%20🚀%20I'd%20like%20to%20start%20a%20magic%20project%20with%20you.%20Can%20we%20discuss?" 
-   target="_blank" 
-   class="magic-cta">
-    LET'S START THE MAGIC 
-    <span class="magic-arrow-wrapper">
-        →
-        <div class="magic-star-container">
+      <a href="https://madhavan1341.github.io/amalfi-restaurant/" target="_blank" class="project-card-link reveal delay-3">
+        <div class="project-card" data-tilt>
+          <div class="project-card-tilt-shine"></div>
+          <div class="card-tag"><i class="fa-solid fa-star me-1"></i> CLIENT PROJECT</div>
+          <h3>Amalfy Italian Restaurant</h3>
+          <p>Premium restaurant landing page with an immersive dining UI experience.</p>
+          <div class="tech-stack"><span>React</span> <span>Immersive UI</span></div>
+        </div>
+      </a>
+
+      <a href="#" target="_blank" class="project-card-link reveal delay-4">
+        <div class="project-card" data-tilt>
+          <div class="project-card-tilt-shine"></div>
+          <div class="card-tag"><i class="fa-solid fa-star me-1"></i> RECENT LAUNCH</div>
+          <h3>Priyan Beach View Residency</h3>
+          <p>Resort experience showcasing authentic hospitality & pool views.</p>
+          <div class="tech-stack"><span>Luxury Theme</span> <span>Netlify</span></div>
+        </div>
+      </a>
+
+      <a href="#" target="_blank" class="project-card-link reveal delay-5">
+        <div class="project-card" data-tilt>
+          <div class="project-card-tilt-shine"></div>
+          <div class="card-tag"><i class="fa-solid fa-star me-1"></i> CLIENT PROJECT</div>
+          <h3>Ronazio Beach View Residency</h3>
+          <p>Digital presence and booking management for a luxury poolside property in Hyderabad.</p>
+          <div class="tech-stack"><span>Mobile Ready</span> <span>Modern UI</span></div>
+        </div>
+      </a>
+
+      <a href="#" target="_blank" class="project-card-link reveal delay-6">
+        <div class="project-card" data-tilt>
+          <div class="project-card-tilt-shine"></div>
+          <div class="card-tag"><i class="fa-solid fa-star me-1"></i> PREMIUM VILLA</div>
+          <h3>The Vintage Poolside</h3>
+          <p>Digital presence and booking management for a luxury poolside property in Pondicherry.</p>
+          <div class="tech-stack"><span>3D Visuals</span> <span>Interactive</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="mt-5 pt-5 text-center position-relative overflow-hidden reveal" style="min-height: 180px;">
+      <a href="https://wa.me/916379028897?text=Hi%20Madhavan%2C%20I%20just%20saw%20your%20portfolio%20at%20Matrix%20Bytes!%20🚀%20I'd%20like%20to%20start%20a%20magic%20project%20with%20you.%20Can%20we%20discuss?"
+         target="_blank" class="magic-cta">
+        LET'S START THE MAGIC
+        <span class="magic-arrow-wrapper">→
+          <div class="magic-star-container">
             <div class="m-star s1"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
             <div class="m-star s2"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
             <div class="m-star s3"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
@@ -941,306 +1517,663 @@
             <div class="m-star s8"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
             <div class="m-star s9"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
             <div class="m-star s10"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-        </div>
-    </span>
-</a>
-        </div>
+          </div>
+        </span>
+      </a>
     </div>
+  </div>
 </section>
 
-<section id="services" class="services-section py-5">
-    <div class="container">
-        
-        <div class="services-header mb-5 text-center text-md-start">
-            <span class="card-tag">HOSPITALITY SERVICES</span>
-            <h2 class="project-main-title mt-3">Hotel Digital <br><span class="red-text">Pricing 🚀</span></h2>
-            <p class="text-white-50 mt-3" style="max-width: 700px;">Helping hotels and residencies maximize direct bookings and dominate Google Search. Transparent pricing, no hidden costs.</p>
-        </div>
-
-        <div class="row g-4">
-    
-    <div class="col-md-6 col-lg-4">
-        <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-hotel"></i></div> <div class="price-tag">₹5,000 <span>one-time</span></div>
-            <h3 class="service-title">OTA & Google Profile</h3>
-            <p class="service-desc">Complete setup on Booking.com/Agoda plus Google Profile optimization.</p>
-            <ul class="service-list">
-                <li><i class="fa-solid fa-check red-text"></i> Booking/Agoda Setup</li>
-                <li><i class="fa-solid fa-check red-text"></i> 15+ Verified Reviews</li>
-                <li><i class="fa-solid fa-check red-text"></i> Google Maps Optimization</li>
-            </ul>
-            <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20👋%0A%0AI'm%20interested%20in%20your%20*OTA%20%26%20Google%20Profile%20Setup*%20service.%20Can%20you%20help%20me%20list%20my%20property%20on%20Booking.com%20and%20Agoda?" 
-           target="_blank" 
-           class="service-btn">Get Started →</a>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4">
-        <div class="service-card popular-glitter">
-            <span class="popular-badge">0% Commission</span>
-            <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
-            <div class="price-tag">₹5,000 <span>onwards</span></div>
-            <h3 class="service-title">Direct Booking Site</h3>
-            <p class="service-desc">Professional hotel website to skip OTA commissions and get direct guests.</p>
-            <ul class="service-list">
-                <li><i class="fa-solid fa-check red-text"></i> Mobile First Design</li>
-                <li><i class="fa-solid fa-check red-text"></i> WhatsApp Booking Bot</li>
-                <li><i class="fa-solid fa-check red-text"></i> Room Gallery & Rates</li>
-            </ul>
-            <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20🌐%0A%0AI'm%20interested%20in%20building%20a%20*Direct%20Booking%20Website*%20for%20my%20property.%20I%20want%20to%20save%20on%20commissions%20and%20get%20direct%20bookings.%20Can%20we%20discuss?" 
-           target="_blank" 
-           class="service-btn red-bg">Build Website →</a>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4">
-        <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
-            <div class="price-tag">₹2,000 <span>one-time</span></div>
-            <h3 class="service-title">Voucher Software</h3>
-            <p class="service-desc">Professional PDF voucher generator for your hotel booking confirmations.</p>
-            <ul class="service-list">
-                <li><i class="fa-solid fa-check red-text"></i> Custom PDF Layout</li>
-                <li><i class="fa-solid fa-check red-text"></i> Auto-Calculations</li>
-                <li><i class="fa-solid fa-check red-text"></i> One-click Share (WhatsApp)</li>
-            </ul>
-            <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20📝%0A%0AI'm%20interested%20in%20your%20*Voucher%20Software*%20service.%20Can%20you%20help%20me%20generate%20professional%20PDF%20vouchers%20for%20my%20hotel%20bookings?" 
-           target="_blank" 
-           class="service-btn">Get Access →</a>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4">
-        <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-            <div class="price-tag">₹15,000 <span>onwards</span></div>
-            <h3 class="service-title">E-commerce Sites</h3>
-            <p class="service-desc">Full online stores with payment gateways and inventory management.</p>
-            <ul class="service-list">
-                <li><i class="fa-solid fa-check red-text"></i> UPI/Card Integration</li>
-                <li><i class="fa-solid fa-check red-text"></i> Admin Dashboard</li>
-                <li><i class="fa-solid fa-check red-text"></i> Order Notifications</li>
-            </ul>
-            <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20🛒%0A%0AI'm%20interested%20in%20your%20*E-commerce%20Sites*%20service.%20Can%20you%20help%20me%20create%20an%20online%20store%20for%20my%20hotel?" 
-           target="_blank" 
-           class="service-btn">Get Started →</a>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4">
-        <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
-            <div class="price-tag">₹500 <span>only</span></div>
-            <h3 class="service-title">Logo Design</h3>
-            <p class="service-desc">Premium, high-resolution logo design to establish your hotel brand identity.</p>
-            <ul class="service-list">
-                <li><i class="fa-solid fa-check red-text"></i> 2 Initial Concepts</li>
-                <li><i class="fa-solid fa-check red-text"></i> High-Res Formats (PNG/SVG)</li>
-                <li><i class="fa-solid fa-check red-text"></i> Brand Consistency</li>
-            </ul>
-            <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20✏️%0A%0AI'm%20interested%20in%20your%20*Logo%20Design*%20service.%20Can%20you%20create%20a%20premium%20logo%20for%20my%20hotel?" 
-           target="_blank" 
-           class="service-btn">Order Logo →</a>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4">
-        <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
-            <div class="price-tag">₹500 <span>/ 2 months</span></div>
-            <h3 class="service-title">Maintenance</h3>
-            <p class="service-desc">Monthly retainer to keep your website updated, secure, and running 24/7.</p>
-            <ul class="service-list">
-                <li><i class="fa-solid fa-check red-text"></i> Monthly Updates</li>
-                <li><i class="fa-solid fa-check red-text"></i> Uptime Monitoring</li>
-                <li><i class="fa-solid fa-check red-text"></i> Support (48hr response)</li>
-            </ul>
-            <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20⚙️%0A%0AI'm%20interested%20in%20your%20*Maintenance*%20service.%20Can%20you%20help%20me%20keep%20my%20website%20updated%20and%20secure?" 
-           target="_blank" 
-           class="service-btn">Subscribe →</a>
-        </div>
-    </div>
+<div class="marquee-wrap" style="transform: scaleX(-1);">
+  <div class="marquee-track" id="marqueeTrack2"></div>
 </div>
+
+<!-- ============================================================
+     💎 SERVICES
+     ============================================================ -->
+<section id="services" class="services-section py-5">
+  <div class="container">
+    <div class="services-header mb-5 text-center text-md-start reveal">
+      <span class="card-tag">HOSPITALITY SERVICES</span>
+      <h2 class="project-main-title mt-3">Hotel Digital <br><span class="red-text">Pricing 🚀</span></h2>
+      <p class="text-white-50 mt-3" style="max-width: 700px;">Helping hotels and residencies maximize direct bookings and dominate Google Search. Transparent pricing, no hidden costs.</p>
     </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-6 col-lg-4 reveal delay-1">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-hotel"></i></div>
+          <div class="price-tag">₹5,000 <span>one-time</span></div>
+          <h3 class="service-title">OTA & Google Profile</h3>
+          <p class="service-desc">Complete setup on Booking.com/Agoda plus Google Profile optimization.</p>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check red-text"></i> Booking/Agoda Setup</li>
+            <li><i class="fa-solid fa-check red-text"></i> 15+ Verified Reviews</li>
+            <li><i class="fa-solid fa-check red-text"></i> Google Maps Optimization</li>
+          </ul>
+          <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20👋%0A%0AI'm%20interested%20in%20your%20*OTA%20%26%20Google%20Profile%20Setup*%20service." target="_blank" class="service-btn">Get Started →</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal delay-2">
+        <div class="service-card popular-glitter">
+          <span class="popular-badge">0% Commission</span>
+          <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+          <div class="price-tag">₹5,000 <span>onwards</span></div>
+          <h3 class="service-title">Direct Booking Site</h3>
+          <p class="service-desc">Professional hotel website to skip OTA commissions and get direct guests.</p>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check red-text"></i> Mobile First Design</li>
+            <li><i class="fa-solid fa-check red-text"></i> WhatsApp Booking Bot</li>
+            <li><i class="fa-solid fa-check red-text"></i> Room Gallery & Rates</li>
+          </ul>
+          <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20🌐%0A%0AI'm%20interested%20in%20building%20a%20*Direct%20Booking%20Website*." target="_blank" class="service-btn red-bg">Build Website →</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal delay-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
+          <div class="price-tag">₹2,000 <span>one-time</span></div>
+          <h3 class="service-title">Voucher Software</h3>
+          <p class="service-desc">Professional PDF voucher generator for your hotel booking confirmations.</p>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check red-text"></i> Custom PDF Layout</li>
+            <li><i class="fa-solid fa-check red-text"></i> Auto-Calculations</li>
+            <li><i class="fa-solid fa-check red-text"></i> One-click Share (WhatsApp)</li>
+          </ul>
+          <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20📝%0A%0AI'm%20interested%20in%20your%20*Voucher%20Software*." target="_blank" class="service-btn">Get Access →</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal delay-1">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+          <div class="price-tag">₹15,000 <span>onwards</span></div>
+          <h3 class="service-title">E-commerce Sites</h3>
+          <p class="service-desc">Full online stores with payment gateways and inventory management.</p>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check red-text"></i> UPI/Card Integration</li>
+            <li><i class="fa-solid fa-check red-text"></i> Admin Dashboard</li>
+            <li><i class="fa-solid fa-check red-text"></i> Order Notifications</li>
+          </ul>
+          <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20🛒%0A%0AI'm%20interested%20in%20your%20*E-commerce%20Sites*." target="_blank" class="service-btn">Get Started →</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal delay-2">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <div class="price-tag">₹500 <span>only</span></div>
+          <h3 class="service-title">Logo Design</h3>
+          <p class="service-desc">Premium, high-resolution logo design to establish your hotel brand identity.</p>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check red-text"></i> 2 Initial Concepts</li>
+            <li><i class="fa-solid fa-check red-text"></i> High-Res Formats (PNG/SVG)</li>
+            <li><i class="fa-solid fa-check red-text"></i> Brand Consistency</li>
+          </ul>
+          <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20✏️%0A%0AI'm%20interested%20in%20your%20*Logo%20Design*." target="_blank" class="service-btn">Order Logo →</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 reveal delay-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+          <div class="price-tag">₹500 <span>/ 2 months</span></div>
+          <h3 class="service-title">Maintenance</h3>
+          <p class="service-desc">Monthly retainer to keep your website updated, secure, and running 24/7.</p>
+          <ul class="service-list">
+            <li><i class="fa-solid fa-check red-text"></i> Monthly Updates</li>
+            <li><i class="fa-solid fa-check red-text"></i> Uptime Monitoring</li>
+            <li><i class="fa-solid fa-check red-text"></i> Support (48hr response)</li>
+          </ul>
+          <a href="https://wa.me/916379028897?text=Hi%20Madhavan!%20⚙️%0A%0AI'm%20interested%20in%20your%20*Maintenance*." target="_blank" class="service-btn">Subscribe →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
+<div class="section-glow-line"></div>
+
+<!-- ============================================================
+     📬 CONTACT
+     ============================================================ -->
 <section id="contact" class="contact-section py-5 position-relative overflow-hidden">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            
-            <div class="col-lg-6 order-lg-2">
-                <div class="contact-glass-card">
-                    <div class="glass-header mb-4">
-                        <span class="badge bg-danger rounded-pill px-3 py-2 mb-3">QUICK INQUIRY</span>
-                        <h3 class="fw-bold text-white">Let's build <br><span class="red-text">something real</span></h3>
-                    </div>
-                    
-                    <form id="matrixForm">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control matrix-input" placeholder="Your name *">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control matrix-input" placeholder="WhatsApp / Email *">
-                            </div>
-                            <div class="col-12">
-                                <select class="form-select matrix-input">
-                                    <option selected disabled>What do you need?</option>
-                                    <option>Hotel/Business Site (₹5k - ₹8k)</option>
-                                    <option>Full Stack App (₹25k+)</option>
-                                    <option>Voucher/Custom Software</option>
-                                    <option>Monthly Maintenance</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control matrix-input" rows="3" placeholder="Tell me about your vision..."></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="magic-cta-btn mt-4">SEND VIA WHATSAPP →</button>
-                    </form>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row g-5 align-items-center">
 
-            <div class="col-lg-6 order-lg-1">
-                <div class="contact-details-box ps-lg-4">
-                    <h4 class="text-white fw-800 mb-4">Direct Access ⚡</h4>
-                    
-                    <div class="info-grid">
-                        <a href="https://wa.me/916379028897?text=Hi%20Madhavan%2C%20I%20just%20saw%20your%20portfolio%20at%20Matrix%20Bytes!%20🚀%20I'd%20like%20to%20start%20a%20magic%20project%20with%20you.%20Can%20we%20discuss?" class="info-tile" target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                        </a>
-                        <a href="mailto:matrixbytess@gmail.com" class="info-tile" target="_blank">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>Email</span>
-                        </a>
-                        <a href="https://www.instagram.com/matrixbytes" class="info-tile" target="_blank">
-                            <i class="fa-brands fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://github.com/madhavan1341" class="info-tile" target="_blank">
-                            <i class="fa-brands fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                    </div>
+      <div class="col-lg-6 order-lg-2 reveal-right">
+        <div class="contact-glass-card">
+          <div class="glass-header mb-4">
+            <span class="badge bg-danger rounded-pill px-3 py-2 mb-3">QUICK INQUIRY</span>
+            <h3 class="fw-bold text-white">Let's build <br><span class="red-text">something real</span></h3>
+          </div>
 
-                    <div class="faq-minimal mt-5">
-                        <div class="faq-row">
-                            <strong>SEO • AEO • GEO?</strong>
-                            <p class="small text-white-50">Future-proofing your site for AI engines like Gemini & ChatGPT.</p>
-                        </div>
-                        <div class="faq-row mt-3 border-top border-secondary pt-3">
-                            <strong>Timeline?</strong>
-                            <p class="small text-white-50">Landing pages: 7 days. Full apps: 3-5 weeks.</p>
-                        </div>
-                    </div>
-                </div>
+          <form id="matrixForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control matrix-input" placeholder="Your name *">
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control matrix-input" placeholder="WhatsApp / Email *">
+              </div>
+              <div class="col-12">
+                <select class="form-select matrix-input">
+                  <option selected disabled>What do you need?</option>
+                  <option>Hotel/Business Site (₹5k - ₹8k)</option>
+                  <option>Full Stack App (₹25k+)</option>
+                  <option>Voucher/Custom Software</option>
+                  <option>Monthly Maintenance</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <textarea class="form-control matrix-input" rows="3" placeholder="Tell me about your vision..."></textarea>
+              </div>
             </div>
+            <button type="button" onclick="sendSignal()" class="transmit-btn-sleek">
+              <span>Send via WhatsApp</span> <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </form>
         </div>
+      </div>
+
+      <div class="col-lg-6 order-lg-1 reveal-left">
+        <div class="contact-details-box ps-lg-4">
+          <h4 class="text-white fw-800 mb-4">Direct Access ⚡</h4>
+          <div class="info-grid">
+            <a href="https://wa.me/916379028897?text=Hi%20Madhavan%2C%20I%20just%20saw%20your%20portfolio%20at%20Matrix%20Bytes!%20🚀" class="info-tile" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
+            </a>
+            <a href="mailto:matrixbytess@gmail.com" class="info-tile" target="_blank">
+              <i class="fa-solid fa-envelope"></i><span>Email</span>
+            </a>
+            <a href="https://www.instagram.com/matrixbytes" class="info-tile" target="_blank">
+              <i class="fa-brands fa-instagram"></i><span>Instagram</span>
+            </a>
+            <a href="https://github.com/madhavan1341" class="info-tile" target="_blank">
+              <i class="fa-brands fa-github"></i><span>GitHub</span>
+            </a>
+          </div>
+
+          <div class="faq-minimal mt-5">
+            <div class="faq-row reveal delay-1">
+              <strong>SEO • AEO • GEO?</strong>
+              <p class="small text-white-50">Future-proofing your site for AI engines like Gemini & ChatGPT.</p>
+            </div>
+            <div class="faq-row mt-3 border-top border-secondary pt-3 reveal delay-2">
+              <strong>Timeline?</strong>
+              <p class="small text-white-50">Landing pages: 7 days. Full apps: 3-5 weeks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
+<!-- ============================================================
+     🦶 FOOTER
+     ============================================================ -->
 <footer class="footer-matrix py-5 mt-5">
-    <div class="container text-center">
-        <div class="footer-cta-container mb-5">
-            <a href="#" class="magic-cta-footer">
-              
-                <span class="magic-arrow-wrapper">
-                    →
-                    <div class="magic-star-container">
-                        <div class="m-star s1"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s2"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s3"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s4"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s5"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s6"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s7"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s8"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s9"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                        <div class="m-star s10"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
-                    </div>
-                </span>
-            </a>
-        </div>
-        
-        <div class="footer-branding pt-4 border-top border-secondary">
-            <h4 class="fw-bold tracking-widest text-white">MATRIX <span class="red-text">BYTES</span></h4>
-            <p class="small text-white-50 mt-2">© 2026 Designed & Developed with 🔥 in India</p>
-        </div>
+  <div class="container text-center">
+    <div class="footer-cta-container mb-5 reveal">
+      <a href="#" class="magic-cta-footer">
+        LET'S CONNECT
+        <span class="magic-arrow-wrapper">→
+          <div class="magic-star-container">
+            <div class="m-star s1"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s2"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s3"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s4"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s5"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s6"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s7"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s8"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s9"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+            <div class="m-star s10"><div class="star-8-inner"></div><div class="star-8-inner cross"></div></div>
+          </div>
+        </span>
+      </a>
     </div>
+    <div class="footer-branding pt-4 border-top border-secondary">
+      <h4 class="fw-bold tracking-widest text-white">MATRIX <span class="red-text">BYTES</span></h4>
+      <p class="small text-white-50 mt-2">© 2026 Designed & Developed with 🔥 in India</p>
+    </div>
+  </div>
 </footer>
-  <script>
-    // Star Engine Logic (Negative delay for instant glitter)
-    const container = document.getElementById('star-container');
-    for (let i = 0; i < 110; i++) {
-      const starWrapper = document.createElement('div');
-      starWrapper.className = 'star-8';
-      const isRed = Math.random() > 0.7;
-      starWrapper.style.color = isRed ? '#ff0000' : '#ffffff';
-      starWrapper.style.left = Math.random() * 100 + 'vw';
-      starWrapper.style.top = Math.random() * 100 + 'vh';
-      const size = Math.random() * 6 + 4 + 'px'; 
-      starWrapper.style.width = starWrapper.style.height = size;
-
-      const inner1 = document.createElement('div');
-      inner1.className = 'star-8-inner';
-      const inner2 = document.createElement('div');
-      inner2.className = 'star-8-inner cross';
-      starWrapper.appendChild(inner1);
-      starWrapper.appendChild(inner2);
-
-      starWrapper.style.animationDuration = Math.random() * 3 + 5 + 's';
-      starWrapper.style.animationDelay = '-' + (Math.random() * 10) + 's';
-      container.appendChild(starWrapper);
-    }
-
-    // Smooth Scroll Landing Fix
-    function smoothScroll(targetId) {
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const navHeight = 90; 
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
-    }
 
 
+<!-- ============================================================
+     📜 SCRIPTS
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    
-document.getElementById('matrixForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Form refresh aagama thadukka
-    
-    // 1. Form-la irunthu details-a edukurom
-    const name = this.querySelectorAll('input')[0].value;
-    const contact = this.querySelectorAll('input')[1].value;
-    const service = this.querySelector('select').value;
-    const vision = this.querySelector('textarea').value;
+<script>
+/* ============================================================
+   🔴 CINEMATIC LOADER ENGINE
+   ============================================================ */
+(function() {
+  const brandEl = document.getElementById('loaderBrand');
+  const text = ['M','A','T','R','I','X',' ','B','Y','T','E','S'];
+  const redIdx = [7,8,9,10,11];
 
-    // Validation (Ethuvum fill pannala na stop panna)
-    if(!name || !contact || service === "What do you need?") {
-        alert("Please fill in the required fields thalaiva!");
-        return;
-    }
+  text.forEach((ch, i) => {
+    const span = document.createElement('span');
+    span.className = 'loader-brand-char' + (redIdx.includes(i) ? ' red' : '');
+    span.textContent = ch === ' ' ? '\u00A0' : ch;
+    span.style.animationDelay = (0.3 + i * 0.08) + 's';
+    brandEl.appendChild(span);
+  });
 
-    // 2. WhatsApp message-a azhaga format panrom
-    // %0A na Next Line (Enter) nu artham
-    const whatsappMessage = `Hi Madhavan! 🚀%0A%0A` +
-        `*New Inquiry from Portfolio*%0A` +
-        `--------------------------%0A` +
-        `*Name:* ${name}%0A` +
-        `*Contact:* ${contact}%0A` +
-        `*Service:* ${service}%0A` +
-        `*Vision:* ${vision}%0A` +
-        `--------------------------`;
+  // Dust particles inside loader
+  const loader = document.getElementById('cinematic-loader');
+  for (let i = 0; i < 30; i++) {
+    const d = document.createElement('div');
+    d.className = 'loader-dust';
+    d.style.left = Math.random() * 100 + '%';
+    d.style.top = Math.random() * 100 + '%';
+    d.style.animationDuration = (2 + Math.random() * 3) + 's';
+    d.style.animationDelay = (Math.random() * 3) + 's';
+    d.style.width = d.style.height = (Math.random() * 3 + 1) + 'px';
+    loader.appendChild(d);
+  }
 
-    // 3. WhatsApp URL-a create panni open panrom
-    const whatsappUrl = `https://wa.me/918825584393?text=${whatsappMessage}`;
-    
-    window.open(whatsappUrl, '_blank');
+  // Trigger wipe then hide
+  setTimeout(() => {
+    loader.classList.add('wipe');
+  }, 2400);
+
+  setTimeout(() => {
+    loader.classList.add('hide');
+    document.body.style.overflow = '';
+    triggerHeroReveal();
+  }, 3200);
+
+  document.body.style.overflow = 'hidden';
+})();
+
+function triggerHeroReveal() {
+  // Kinetic typography
+  document.querySelectorAll('.kinetic-inner').forEach(el => {
+    setTimeout(() => el.classList.add('revealed'), 100);
+  });
+  // Start counters
+  setTimeout(startCounters, 500);
+}
+
+
+/* ============================================================
+   ✨ STAR ENGINE
+   ============================================================ */
+const container = document.getElementById('star-container');
+for (let i = 0; i < 110; i++) {
+  const sw = document.createElement('div');
+  sw.className = 'star-8';
+  const isRed = Math.random() > 0.7;
+  sw.style.color = isRed ? '#ff0000' : '#ffffff';
+  sw.style.left = Math.random() * 100 + 'vw';
+  sw.style.top = Math.random() * 100 + 'vh';
+  const size = (Math.random() * 6 + 4) + 'px';
+  sw.style.width = sw.style.height = size;
+  const i1 = document.createElement('div'); i1.className = 'star-8-inner';
+  const i2 = document.createElement('div'); i2.className = 'star-8-inner cross';
+  sw.appendChild(i1); sw.appendChild(i2);
+  sw.style.animationDuration = (Math.random() * 3 + 5) + 's';
+  sw.style.animationDelay = '-' + (Math.random() * 10) + 's';
+  container.appendChild(sw);
+}
+
+/* Ambient dust particles */
+for (let i = 0; i < 40; i++) {
+  const d = document.createElement('div');
+  d.className = 'dust-particle';
+  d.style.left = Math.random() * 100 + 'vw';
+  d.style.top = Math.random() * 100 + 'vh';
+  d.style.animationDuration = (4 + Math.random() * 6) + 's';
+  d.style.animationDelay = (Math.random() * 8) + 's';
+  d.style.opacity = Math.random() * 0.6;
+  document.body.appendChild(d);
+}
+
+
+/* ============================================================
+   🖱️ MAGNETIC CUSTOM CURSOR + LIQUID TRAIL
+   ============================================================ */
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+let trailInterval;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
 });
 
-  </script>
+// Smooth ring follow
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+// Liquid trail
+let lastTrailTime = 0;
+document.addEventListener('mousemove', e => {
+  const now = Date.now();
+  if (now - lastTrailTime < 40) return;
+  lastTrailTime = now;
+
+  const trail = document.createElement('div');
+  trail.className = 'cursor-trail';
+  trail.style.left = e.clientX + 'px';
+  trail.style.top  = e.clientY + 'px';
+  const hue = Math.random() > 0.5 ? '#ff0000' : 'rgba(255,255,255,0.5)';
+  trail.style.background = hue;
+  trail.style.width = trail.style.height = (Math.random() * 4 + 2) + 'px';
+  document.body.appendChild(trail);
+  setTimeout(() => trail.remove(), 600);
+});
+
+// Hover / click states
+document.querySelectorAll('a, button, .info-card, .service-card, .project-card').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
+
+// Magnetic buttons
+document.querySelectorAll('.service-btn, .magic-cta-btn, .transmit-btn-sleek').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top  + r.height / 2;
+    const dx = (e.clientX - cx) * 0.25;
+    const dy = (e.clientY - cy) * 0.25;
+    btn.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+
+/* ============================================================
+   📊 SCROLL REVEAL ENGINE
+   ============================================================ */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      // Skill bars
+      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.fill + '%';
+      });
+      // Animated underline
+      entry.target.querySelectorAll('.animated-underline').forEach(el => el.classList.add('revealed'));
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  revealObs.observe(el);
+});
+
+// Also observe skill bars independently
+const skillObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.width = entry.target.dataset.fill + '%';
+      skillObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-bar-fill').forEach(b => skillObs.observe(b));
+
+// Animated underline on scroll
+const underlineObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
+}, { threshold: 0.5 });
+document.querySelectorAll('.animated-underline').forEach(el => underlineObs.observe(el));
+
+
+/* ============================================================
+   🎯 3D TILT CARDS (Drag / Mouse Effect)
+   ============================================================ */
+document.querySelectorAll('[data-tilt]').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const rx2 = (e.clientY - cy) / (rect.height / 2) * -12;
+    const ry2 = (e.clientX - cx) / (rect.width  / 2) *  12;
+
+    card.style.transform = `perspective(800px) rotateX(${rx2}deg) rotateY(${ry2}deg) translateY(-12px)`;
+
+    // Update shine position
+    const shine = card.querySelector('.project-card-tilt-shine');
+    if (shine) {
+      const px = ((e.clientX - rect.left) / rect.width) * 100;
+      const py = ((e.clientY - rect.top) / rect.height) * 100;
+      shine.style.setProperty('--mx', px + '%');
+      shine.style.setProperty('--my', py + '%');
+    }
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform 0.6s cubic-bezier(0.23,1,0.32,1)';
+  });
+
+  // Drag animation
+  let isDragging = false, startX, startY, cardStartX, cardStartY;
+  card.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.clientX; startY = e.clientY;
+    card.style.cursor = 'grabbing';
+    card.style.transition = 'none';
+  });
+  document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const dx = (e.clientX - startX) * 0.1;
+    const dy = (e.clientY - startY) * 0.1;
+    card.style.transform = `perspective(800px) rotateY(${dx}deg) rotateX(${-dy}deg) scale(1.02)`;
+  });
+  document.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    card.style.cursor = '';
+    card.style.transition = 'transform 0.6s cubic-bezier(0.23,1,0.32,1)';
+    card.style.transform = '';
+  });
+});
+
+
+/* ============================================================
+   🔢 COUNTER ANIMATION
+   ============================================================ */
+function startCounters() {
+  document.querySelectorAll('.count-up').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    let current = 0;
+    const step = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = current;
+    }, 40);
+  });
+}
+
+
+/* ============================================================
+   🌈 MARQUEE BUILDER
+   ============================================================ */
+function buildMarquee(id) {
+  const items = ['WEB DEVELOPMENT','UI/UX DESIGN','HOTEL DIGITAL','FULL-STACK','BRANDING','SEO & GEO','AUTOMATION','DIRECT BOOKING'];
+  const track = document.getElementById(id);
+  if (!track) return;
+  // Duplicate for seamless loop
+  [...items, ...items].forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'marquee-item';
+    div.innerHTML = `<span class="dot"></span>${item}`;
+    track.appendChild(div);
+  });
+}
+buildMarquee('marqueeTrack');
+buildMarquee('marqueeTrack2');
+
+
+/* ============================================================
+   🌊 SMOOTH PARALLAX (mousemove + scroll)
+   ============================================================ */
+document.addEventListener('mousemove', e => {
+  const x = (e.clientX / window.innerWidth  - 0.5) * 2;
+  const y = (e.clientY / window.innerHeight - 0.5) * 2;
+  document.querySelectorAll('.parallax-orb').forEach(orb => {
+    const speed = parseFloat(orb.dataset.speed || 0.3);
+    orb.style.transform = `translate(${x * speed * 40}px, ${y * speed * 40}px)`;
+  });
+});
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  // Nav scroll effect
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('scrolled', scrollY > 50);
+
+  // Back to top
+  document.getElementById('back-top').classList.toggle('show', scrollY > 400);
+
+  // Hero parallax
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) {
+    heroSection.style.backgroundPositionY = scrollY * 0.5 + 'px';
+  }
+});
+
+
+/* ============================================================
+   🌊 PAGE WIPE ON EXTERNAL LINK CLICKS
+   ============================================================ */
+function pageWipe(callback) {
+  const wipe = document.getElementById('page-wipe');
+  wipe.classList.add('wipe-in');
+  setTimeout(() => {
+    callback();
+    setTimeout(() => {
+      wipe.classList.remove('wipe-in');
+      wipe.classList.add('wipe-out');
+      setTimeout(() => wipe.classList.remove('wipe-out'), 600);
+    }, 200);
+  }, 600);
+}
+
+
+/* ============================================================
+   📜 SMOOTH SCROLL
+   ============================================================ */
+function smoothScroll(targetId) {
+  const target = document.getElementById(targetId);
+  if (target) {
+    const navHeight = 90;
+    const pos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+    window.scrollTo({ top: pos, behavior: 'smooth' });
+  }
+}
+
+
+/* ============================================================
+   ✉️ FORM SUBMIT → WHATSAPP
+   ============================================================ */
+function sendSignal() {
+  const form = document.getElementById('matrixForm');
+  const name    = form.querySelectorAll('input')[0].value;
+  const contact = form.querySelectorAll('input')[1].value;
+  const service = form.querySelector('select').value;
+  const vision  = form.querySelector('textarea').value;
+
+  if (!name || !contact || service === "What do you need?") {
+    alert("Please fill in the required fields thalaiva!");
+    return;
+  }
+  const msg = `Hi Madhavan! 🚀%0A%0A*New Inquiry from Portfolio*%0A---------------------------%0A*Name:* ${name}%0A*Contact:* ${contact}%0A*Service:* ${service}%0A*Vision:* ${vision}%0A---------------------------`;
+  window.open(`https://wa.me/918825584393?text=${msg}`, '_blank');
+}
+
+document.getElementById('matrixForm').addEventListener('submit', e => e.preventDefault());
+
+
+/* ============================================================
+   ✍️ TEXT SCRAMBLE on nav brand hover
+   ============================================================ */
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%';
+function scramble(el, original) {
+  let iter = 0;
+  const interval = setInterval(() => {
+    el.textContent = original.split('').map((ch, i) => {
+      if (i < iter) return original[i];
+      return ch === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)];
+    }).join('');
+    if (iter >= original.length) clearInterval(interval);
+    iter += 1;
+  }, 40);
+}
+
+const navBrand = document.querySelector('.nav-brand');
+if (navBrand) {
+  navBrand.addEventListener('mouseenter', () => {
+    scramble(navBrand, 'MATRIX BYTES');
+  });
+  navBrand.addEventListener('mouseleave', () => {
+    navBrand.innerHTML = 'MATRIX <span style="color:#ff0000">BYTES</span>';
+  });
+}
+const iconLayer = document.getElementById('flee-icons-layer');
+const socialIcons = ['fa-github', 'fa-google', 'fa-youtube', 'fa-spotify', 'fa-x-twitter', 'fa-instagram'];
+
+// Ippo 20 icons mattum dhaan create aagum
+for (let i = 0; i < 20; i++) {
+  const iconDiv = document.createElement('div');
+  iconDiv.className = 'flee-icon';
+  const iconClass = socialIcons[Math.floor(Math.random() * socialIcons.length)];
+  iconDiv.innerHTML = `<i class="fa-brands ${iconClass}"></i>`;
+  
+  // Random Position
+  iconDiv.style.left = Math.random() * 90 + 'vw';
+  iconDiv.style.top = Math.random() * 90 + 'vh';
+  iconLayer.appendChild(iconDiv);
+}
+
+document.addEventListener('mousemove', (e) => {
+  const allIcons = document.querySelectorAll('.flee-icon');
+  allIcons.forEach(icon => {
+    const rect = icon.getBoundingClientRect();
+    const iconX = rect.left + rect.width / 2;
+    const iconY = rect.top + rect.height / 2;
+    const dist = Math.hypot(iconX - e.clientX, iconY - e.clientY);
+
+    if (dist < 200) { // Mouse 200px kulla vandha flee aagum
+      const angle = Math.atan2(iconY - e.clientY, iconX - e.clientX);
+      const pushForce = (200 - dist) * 0.9; 
+      icon.style.transform = `translate(${Math.cos(angle) * pushForce}px, ${Math.sin(angle) * pushForce}px)`;
+      icon.style.opacity = "1";
+    } else {
+      icon.style.transform = `translate(0, 0)`;
+      icon.style.opacity = "0.4";
+    }
+  });
+});
+</script>
 </body>
 </html>
