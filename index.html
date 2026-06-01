@@ -136,7 +136,7 @@
   animation: fadeInUp 1s 0.5s both;
 }
 
-
+/* Loader wipe curtains */
 .loader-curtain {
   position: absolute;
   top: 0;
@@ -212,7 +212,9 @@ body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.5); }
 }
 
 
-
+/* ============================================================
+   🌊 PAGE WIPE TRANSITION OVERLAY
+   ============================================================ */
 #page-wipe {
   position: fixed;
   inset: 0;
@@ -236,7 +238,9 @@ body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.5); }
 #page-wipe.wipe-out .wipe-panel { transform: scaleY(0); transform-origin: top; }
 
 
-
+/* ============================================================
+   ✨ SCROLL REVEAL BASE
+   ============================================================ */
 .reveal {
   opacity: 0;
   transform: translateY(50px);
@@ -393,28 +397,6 @@ body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.5); }
   text-transform: uppercase;
   margin-top: 2px;
 }
-
-
-/* ============================================================
-   💧 PARALLAX GLASS LAYER
-   ============================================================ */
-.parallax-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-.parallax-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.15;
-  will-change: transform;
-}
-.parallax-orb-1 { width: 500px; height: 500px; background: #ff0000; top: -100px; left: -150px; }
-.parallax-orb-2 { width: 400px; height: 400px; background: #ff3333; bottom: -100px; right: -100px; }
-.parallax-orb-3 { width: 300px; height: 300px; background: #660000; top: 50%; left: 50%; }
 
 
 /* ============================================================
@@ -1175,31 +1157,28 @@ section { position: relative; }
 }
 #back-top.show { opacity: 1; transform: translateY(0); }
 #back-top:hover { background: #ff0000; color: #fff; box-shadow: 0 0 20px rgba(255,0,0,0.5); transform: translateY(-3px); }
-/* Cat & Mouse Fleeing Icons Style */
 
-
-
-.flee-icon {
-  position: absolute;
-  width: 70px;  /* Outer boundary perusu */
-  height: 70px;
-  color: #ff0000;
-  font-size: 45px; /* Icon size ippo nalla perusa theriyum */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
-  transition: transform 0.2s ease-out, opacity 0.3s;
-  opacity: 0.4;
-  z-index: 5;
-}
 </style>
 </head>
 <body>
-    <!-- ============================================================
-     🧙‍♂️ FLEE ICONS LAYER (for random magic sparkles)
+
+<!-- ============================================================
+     🖱️ CUSTOM CURSOR
      ============================================================ -->
-<div id="flee-icons-layer" style="position: fixed; inset: 0; pointer-events: none; z-index: 2;"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ============================================================
+     🌊 PAGE WIPE OVERLAY
+     ============================================================ -->
+<div id="page-wipe">
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+  <div class="wipe-panel"></div>
+</div>
+
 <!-- ============================================================
      🔴 CINEMATIC LOADER
      ============================================================ -->
@@ -1218,23 +1197,6 @@ section { position: relative; }
   <div class="loader-brand" id="loaderBrand"></div>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
   <div class="loader-tagline">DESIGN FAST · DEPLOY SMART · GROW BIG</div>
-</div>
-
-<!-- ============================================================
-     🖱️ CUSTOM CURSOR
-     ============================================================ -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-
-<!-- ============================================================
-     🌊 PAGE WIPE OVERLAY
-     ============================================================ -->
-<div id="page-wipe">
-  <div class="wipe-panel"></div>
-  <div class="wipe-panel"></div>
-  <div class="wipe-panel"></div>
-  <div class="wipe-panel"></div>
-  <div class="wipe-panel"></div>
 </div>
 
 <!-- ============================================================
@@ -1270,12 +1232,6 @@ section { position: relative; }
      🦸 HERO
      ============================================================ -->
 <section class="hero">
-  <div class="parallax-bg">
-    <div class="parallax-orb parallax-orb-1" data-speed="0.3"></div>
-    <div class="parallax-orb parallax-orb-2" data-speed="0.5"></div>
-    <div class="parallax-orb parallax-orb-3" data-speed="0.2"></div>
-  </div>
-
   <div class="hero-label">
     <span class="hero-label-inner">INNOVATION BYTES</span>
   </div>
@@ -1322,9 +1278,6 @@ section { position: relative; }
      📜 ABOUT
      ============================================================ -->
 <section id="about" class="about-section">
-  <div class="parallax-bg">
-    <div class="parallax-orb parallax-orb-1" data-speed="0.4" style="top:auto;bottom:-150px;left:auto;right:-200px;"></div>
-  </div>
   <div class="container">
     <div class="row g-5 align-items-start">
 
@@ -1389,7 +1342,7 @@ section { position: relative; }
               <i class="fa-solid fa-language fs-4" style="color: #ff0000;"></i>
               <div>
                 <div class="card-label">COMMUNICATION</div>
-                <p class="card-value">Tamil • English • Telugu</p>
+                <p class="card-value">Tamil • English • Telugu • Hindi</p>
               </div>
             </div>
           </div>
@@ -1475,7 +1428,7 @@ section { position: relative; }
         </div>
       </a>
 
-      <a href="https://ronazioresidency.github.io/ronaz/" target="_blank" class="project-card-link reveal delay-5">
+      <a href="" target="_blank" class="project-card-link reveal delay-5">
         <div class="project-card" data-tilt>
           <div class="project-card-tilt-shine"></div>
           <div class="card-tag"><i class="fa-solid fa-star me-1"></i> CLIENT PROJECT</div>
@@ -1792,11 +1745,9 @@ section { position: relative; }
 })();
 
 function triggerHeroReveal() {
-  // Kinetic typography
   document.querySelectorAll('.kinetic-inner').forEach(el => {
     setTimeout(() => el.classList.add('revealed'), 100);
   });
-  // Start counters
   setTimeout(startCounters, 500);
 }
 
@@ -1841,7 +1792,6 @@ for (let i = 0; i < 40; i++) {
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
-let trailInterval;
 
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
@@ -1849,7 +1799,6 @@ document.addEventListener('mousemove', e => {
   dot.style.top  = my + 'px';
 });
 
-// Smooth ring follow
 function animateRing() {
   rx += (mx - rx) * 0.12;
   ry += (my - ry) * 0.12;
@@ -1908,11 +1857,9 @@ const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('revealed');
-      // Skill bars
       entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
         bar.style.width = bar.dataset.fill + '%';
       });
-      // Animated underline
       entry.target.querySelectorAll('.animated-underline').forEach(el => el.classList.add('revealed'));
       revealObs.unobserve(entry.target);
     }
@@ -1923,7 +1870,6 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
   revealObs.observe(el);
 });
 
-// Also observe skill bars independently
 const skillObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1934,7 +1880,6 @@ const skillObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('.skill-bar-fill').forEach(b => skillObs.observe(b));
 
-// Animated underline on scroll
 const underlineObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
 }, { threshold: 0.5 });
@@ -1954,7 +1899,6 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
 
     card.style.transform = `perspective(800px) rotateX(${rx2}deg) rotateY(${ry2}deg) translateY(-12px)`;
 
-    // Update shine position
     const shine = card.querySelector('.project-card-tilt-shine');
     if (shine) {
       const px = ((e.clientX - rect.left) / rect.width) * 100;
@@ -1969,8 +1913,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
     card.style.transition = 'transform 0.6s cubic-bezier(0.23,1,0.32,1)';
   });
 
-  // Drag animation
-  let isDragging = false, startX, startY, cardStartX, cardStartY;
+  let isDragging = false, startX, startY;
   card.addEventListener('mousedown', e => {
     isDragging = true;
     startX = e.clientX; startY = e.clientY;
@@ -2017,7 +1960,6 @@ function buildMarquee(id) {
   const items = ['WEB DEVELOPMENT','UI/UX DESIGN','HOTEL DIGITAL','FULL-STACK','BRANDING','SEO & GEO','AUTOMATION','DIRECT BOOKING'];
   const track = document.getElementById(id);
   if (!track) return;
-  // Duplicate for seamless loop
   [...items, ...items].forEach(item => {
     const div = document.createElement('div');
     div.className = 'marquee-item';
@@ -2032,30 +1974,11 @@ buildMarquee('marqueeTrack2');
 /* ============================================================
    🌊 SMOOTH PARALLAX (mousemove + scroll)
    ============================================================ */
-document.addEventListener('mousemove', e => {
-  const x = (e.clientX / window.innerWidth  - 0.5) * 2;
-  const y = (e.clientY / window.innerHeight - 0.5) * 2;
-  document.querySelectorAll('.parallax-orb').forEach(orb => {
-    const speed = parseFloat(orb.dataset.speed || 0.3);
-    orb.style.transform = `translate(${x * speed * 40}px, ${y * speed * 40}px)`;
-  });
-});
-
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
-
-  // Nav scroll effect
   const nav = document.getElementById('mainNav');
   nav.classList.toggle('scrolled', scrollY > 50);
-
-  // Back to top
   document.getElementById('back-top').classList.toggle('show', scrollY > 400);
-
-  // Hero parallax
-  const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    heroSection.style.backgroundPositionY = scrollY * 0.5 + 'px';
-  }
 });
 
 
@@ -2135,41 +2058,6 @@ if (navBrand) {
     navBrand.innerHTML = 'MATRIX <span style="color:#ff0000">BYTES</span>';
   });
 }
-const iconLayer = document.getElementById('flee-icons-layer');
-const socialIcons = ['fa-github', 'fa-google', 'fa-youtube', 'fa-spotify', 'fa-x-twitter', 'fa-instagram'];
-
-// Ippo 20 icons mattum dhaan create aagum
-for (let i = 0; i < 20; i++) {
-  const iconDiv = document.createElement('div');
-  iconDiv.className = 'flee-icon';
-  const iconClass = socialIcons[Math.floor(Math.random() * socialIcons.length)];
-  iconDiv.innerHTML = `<i class="fa-brands ${iconClass}"></i>`;
-  
-  // Random Position
-  iconDiv.style.left = Math.random() * 90 + 'vw';
-  iconDiv.style.top = Math.random() * 90 + 'vh';
-  iconLayer.appendChild(iconDiv);
-}
-
-document.addEventListener('mousemove', (e) => {
-  const allIcons = document.querySelectorAll('.flee-icon');
-  allIcons.forEach(icon => {
-    const rect = icon.getBoundingClientRect();
-    const iconX = rect.left + rect.width / 2;
-    const iconY = rect.top + rect.height / 2;
-    const dist = Math.hypot(iconX - e.clientX, iconY - e.clientY);
-
-    if (dist < 200) { // Mouse 200px kulla vandha flee aagum
-      const angle = Math.atan2(iconY - e.clientY, iconX - e.clientX);
-      const pushForce = (200 - dist) * 0.9; 
-      icon.style.transform = `translate(${Math.cos(angle) * pushForce}px, ${Math.sin(angle) * pushForce}px)`;
-      icon.style.opacity = "1";
-    } else {
-      icon.style.transform = `translate(0, 0)`;
-      icon.style.opacity = "0.4";
-    }
-  });
-});
 </script>
 </body>
 </html>
